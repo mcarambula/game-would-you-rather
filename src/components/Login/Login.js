@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Logo from '../Logo/Logo';
 import './Login.css';
 
 class Login extends Component {
@@ -13,6 +14,7 @@ class Login extends Component {
             <div className='login'>
                 <div className='login-box'>
                     <div className='sign-in'>Sign In</div>
+                    <Logo />
                     <div className='inner-box'>
                         User:
                         <select>
