@@ -1,15 +1,10 @@
-
-
-
-/**/
-
 .login {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100%;
-    background: #624891
+    background: #826a9f;
 }
 
 .login-box {
