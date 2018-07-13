@@ -50,3 +50,7 @@ button {
     text-align: center;
     border-radius: 5px;
 }
+button:disabled {
+    background: rgba(67, 180, 161, 0.45);
+    color: #cacaca;
+}
