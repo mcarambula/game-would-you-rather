@@ -30,7 +30,7 @@ class Login extends Component {
         const { users, loading } = this.props;
         const userArray = users ? Object.keys(users) : [];
         return (
-            <div className='login'>
+            <div className='Login'>
                 <form className='login-box' onSubmit={this.handleSubmit}>
                     <div className='sign-in'>Sign In</div>
                     <Logo />
