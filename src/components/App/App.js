@@ -1,16 +1,31 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import LoadingBar from 'react-redux-loading';
+import Login from '../Login/Login';
+import { getAllUsers } from '../../actions/users';
 import './App.css';
 
 class App extends Component {
+    componentDidMount() {
+        this.props.getAllUsers();
+    }
     render() {
         return (
             <div className="App">
-                <header className="App-header">
-                    <h1 className="App-title">Welcome to React</h1>
-                </header>
+                <LoadingBar />
+                <Login />
             </div>
         );
     }
 }
 
-export default App;
+const mapDispatchToProps = { getAllUsers };
+
+function mapStateToProps({ users }) {
+    return {
+        loading: users === null,
+        users
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
