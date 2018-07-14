@@ -12,7 +12,7 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <LoadingBar />
+                <LoadingBar style={{ backgroundColor: '#76d8c7', height: '5px' }}/>
                 <Login />
             </div>
         );
