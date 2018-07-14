@@ -1,12 +1,21 @@
 import React, { Component, Fragment } from 'react';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Logo from '../Logo/Logo';
+import { setUser } from '../../actions/users';
 import './Login.css';
 
 class Login extends Component {
     state = {
         user: ''
     };
+    componentDidMount() {
+       /*const userId = localStorage.getItem('wy-userId');
+        if (userId !== null) {
+            this.props.setUser(userId);
+            this.props.history.push('/dashboard');
+        }*/
+    }
     renderUsers(userArray, users) {
         return (
             <Fragment>
@@ -23,8 +32,9 @@ class Login extends Component {
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state.user);
-        //// TODO:  go to dashboard
+        localStorage.setItem('wy-userId', JSON.stringify(this.state.user));
+        this.props.setUser(this.state.user);
+        this.props.history.push('/dashboard');
     }
     render() {
         const { users, loading } = this.props;
@@ -44,7 +54,7 @@ class Login extends Component {
                                 <option>Loading... </option>
                         }
                         </select>
-                        <button disabled={this.state.user != '' ? false: true}>SUBMIT</button>
+                        <button disabled={this.state.user !== '' ? false: true}>SUBMIT</button>
                     </div>
                 </form>
             </div>
@@ -53,6 +63,9 @@ class Login extends Component {
 
 }
 
+
+const mapDispatchToProps = { setUser };
+
 function mapStateToProps({ users }) {
     return {
         loading: users === null,
@@ -60,5 +73,4 @@ function mapStateToProps({ users }) {
     }
 }
 
-
-export default connect(mapStateToProps)(Login);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));

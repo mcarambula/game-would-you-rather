@@ -6,3 +6,10 @@
     border-bottom: 1px solid #ffffff4f;
     padding-bottom: 25px;
 }
+
+.logo.small {
+    margin: 0px;
+    font-size: 30px;
+    border: 0px;
+    padding: 0;
+}
