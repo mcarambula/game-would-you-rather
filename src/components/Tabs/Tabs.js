@@ -1,26 +1,18 @@
 import React, { Component } from 'react';
 import './Tabs.css';
 
-class Tabs extends Component {
-    render() {
-        return (
-            <div className='tabs-container'>
-                <div className='tabs'>
-                    <div
-                        className={`tab ${this.props.active === 0 ? 'active' : ''}`}
-                        onClick={ () => this.props.changeTab(0)}>
-                        Unaswered
-                    </div>
-                    <div
-                        className={`tab ${this.props.active === 1 ? 'active' : ''}`}
-                        onClick={ ()=> this.props.changeTab(1)}>
-                        Answered
-                    </div>
-                 </div>
-            </div>
-        )
-    }
-
-}
+const Tabs = ({ active, options, changeTab }) => (
+    <div className='tabs-container'>
+        {
+            options.map((option, index) => (
+                <div
+                    className={`tab ${active === index ? 'active' : ''}`}
+                    onClick={ () => changeTab(index)}>
+                    {option}
+                </div>
+            ))
+        }
+    </div>
+)
 
 export default Tabs;

@@ -1,0 +1,10 @@
+.Questions {
+    width: 700px;
+    margin: 20px auto 0 ;
+}
+
+.Questions > div {
+    border: 1px solid gray;
+    /*display: flex;
+    flex-wrap: wrap;*/
+}

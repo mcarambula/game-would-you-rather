@@ -5,4 +5,5 @@
 
 .app-content {
     display: flex;
+    height: calc(100% - 83px);
 }

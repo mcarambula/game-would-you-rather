@@ -1,14 +1,16 @@
 .question {
-    padding: 20px;
-    border: 1px solid gray;
     border-radius: 5px;
-    margin-bottom: 15px;
+    margin: 15px 20px;
+    box-shadow: 0 0 11px 0px #c1c1c1;
+    //width: 48%;
+    box-sizing: border-box;
+    padding-bottom: 10px;
 }
 
 .would-you {
     font-family: 'Cookie', sans-serif;
     font-size: 24px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 .options {
     display: flex;
@@ -17,15 +19,23 @@
 }
 
 .option {
-    padding: 20px;
-    color: white;
+    /*padding: 20px;
+    color: white;*/
     border-radius: 2px;
     margin-right: 10px;
 }
 
 .option-one {
-    background: #3a3441;
+    color: #6b449a;
 }
 .option-two {
-    background: #007c71;
+    color: #007c71;
+}
+
+.author {
+    /*background: #3a3441;
+    padding: 10px;
+    color: white;*/
+    background: #e6e6e6;
+    padding: 10px;
 }

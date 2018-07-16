@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Tabs from '../Tabs/Tabs';
 import Question from '../Question/Question';
+import './Questions.css';
 
 class Questions extends Component {
     state = {
@@ -11,24 +12,27 @@ class Questions extends Component {
         this.setState({active: id});
     }
     renderQuestions = (filter) => {
-        const { questions } = this.props;
+        const { questions, users } = this.props;
         const q = (filter === 'unanswered') ? this.props.unaswered : this.props.answered;
         return (
             q.map(id => (
                 <Question
-                    optionOne={questions[id].optionOne.text}
-                    optionTwo={questions[id].optionTwo.text} />
+                    author={users[questions[id].author].name}
+                    question={questions[id]}/>
             ))
         )
     }
     render() {
         return (
             <div className='Questions'>
-               <Tabs changeTab={this.changeTab} active={this.state.active}/>
-               <div>
-                  { (this.state.active === 0) && this.renderQuestions('unanswered')}
-                  { (this.state.active === 1) && this.renderQuestions('answered')}
-               </div>
+                <div>
+                    <Tabs
+                        options={['Unaswered', 'Answered']}
+                        changeTab={this.changeTab}
+                        active={this.state.active} />
+                    { (this.state.active === 0) && this.renderQuestions('unanswered')}
+                    { (this.state.active === 1) && this.renderQuestions('answered')}
+                </div>
             </div>
         )
     }

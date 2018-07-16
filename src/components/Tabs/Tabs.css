@@ -1,19 +1,14 @@
 .tabs-container {
-    width: 800px;
-    border: 1px solid white;
-    margin: 30px auto;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
-
-.tabs {
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     display: flex;
     justify-content: center;
+    background: #a5a5a5;
 }
 
 .tab {
     padding: 15px 0px;
-    background: #a5a5a5;
     width: 50%;
     color: #666666;
     cursor: pointer;
@@ -32,4 +27,3 @@
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
-
