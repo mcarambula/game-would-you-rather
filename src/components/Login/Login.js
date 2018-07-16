@@ -34,7 +34,7 @@ class Login extends Component {
         e.preventDefault();
         localStorage.setItem('wy-userId', JSON.stringify(this.state.user));
         this.props.setUser(this.state.user);
-        this.props.history.push('/dashboard');
+        this.props.history.push('/dashboard/questions');
     }
     render() {
         const { users, loading } = this.props;

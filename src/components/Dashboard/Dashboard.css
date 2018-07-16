@@ -1,4 +1,8 @@
 .Dashboard {
-    background: #e5deec;
+    background: #fafbfc;
     height: 100%;
+}
+
+.app-content {
+    display: flex;
 }

@@ -1,26 +1,60 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Logo from '../Logo/Logo';
 import NavBar from '../NavBar/NavBar';
+import Menu from '../Menu/Menu';
+import Questions from '../Questions/Questions';
+import NewQuestion from '../NewQuestion/NewQuestion';
+import LeaderBoard from '../LeaderBoard/LeaderBoard';
+import { getAllQuestions } from '../../actions/questions';
 import './Dashboard.css';
 
 class Dashboard extends Component {
+    componentDidMount() {
+        this.props.getAllQuestions();
+    }
+    getRoute = () => {
+		return (
+			<Switch>
+				<Route
+					path="/questions"
+					component={Questions}
+				/>
+                <Route
+					path="/leaderboard"
+					component={LeaderBoard}
+				/> 
+                <Route
+                    path="/new-question"
+                    component={NewQuestion}
+                />
+			</Switch>
+		);
+	}
     render() {
-        console.log(this.props);
         return (
-            <div className='Dashboard'>
-               <NavBar />
-            </div>
+            <BrowserRouter basename='dashboard'>
+                <div className='Dashboard'>
+                    <NavBar />
+                    <div className='app-content'>
+                        <Menu />
+                        { this.getRoute() }
+                    </div>
+                </div>
+            </BrowserRouter>
         )
     }
 
 }
 
-function mapStateToProps({ users }) {
+const mapDispatchToProps = { getAllQuestions };
+
+function mapStateToProps({ questions, users }) {
     return {
+        questions,
         users
     }
 }
 
 
-export default connect(mapStateToProps)(Dashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

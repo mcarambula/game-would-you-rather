@@ -5,7 +5,7 @@ const User = ({ user = {} }) => {
     return (
         <div className='user'>
             {user.name}
-            <img src={user.avatarURL} />
+            <img src={user.avatarURL}  alt={user.name} />
         </div>
     )
 }

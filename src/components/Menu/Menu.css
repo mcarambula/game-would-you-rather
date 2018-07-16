@@ -1,0 +1,15 @@
+.menu {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 100%;
+    background: white;
+}
+
+.item {
+    padding: 15px;
+}
+
+.item.active{
+    background: red;
+}
