@@ -7,12 +7,10 @@ import Questions from '../Questions/Questions';
 import NewQuestion from '../NewQuestion/NewQuestion';
 import LeaderBoard from '../LeaderBoard/LeaderBoard';
 import { getAllQuestions } from '../../actions/questions';
+import utils from '../../utils/utils';
 import './Dashboard.css';
 
 class Dashboard extends Component {
-    componentDidMount() {
-        this.props.getAllQuestions();
-    }
     getRoute = () => {
 		return (
 			<Switch>
@@ -23,7 +21,7 @@ class Dashboard extends Component {
                 <Route
 					path="/leaderboard"
 					component={LeaderBoard}
-				/> 
+				/>
                 <Route
                     path="/new-question"
                     component={NewQuestion}
@@ -49,7 +47,7 @@ class Dashboard extends Component {
 
 const mapDispatchToProps = { getAllQuestions };
 
-function mapStateToProps({ questions, users }) {
+function mapStateToProps({ authedUser, questions, users }) {
     return {
         questions,
         users

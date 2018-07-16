@@ -5,40 +5,33 @@ import LoadingBar from 'react-redux-loading';
 import Login from '../Login/Login';
 import Dashboard from '../Dashboard/Dashboard';
 
-import { getAllUsers } from '../../actions/users';
+import { handleInitialData } from '../../actions/shared';
 import './App.css';
 
 class App extends Component {
     componentDidMount() {
-        this.props.getAllUsers();
+        this.props.handleInitialData();
     }
-    getRoute = () => {
+    getRoute = (loggedIn) => {
 		return (
 			<Switch>
-				<Route
-					exact
-					path="/"
-					component={Login}
-				/>
-                <Route
-					path="/dashboard"
-					component={Dashboard}
-				/>
-			</Switch>
+                <Route path="/" exact render={() => loggedIn ? <Dashboard /> : <Login />} />
+                <Route path="/dashboard" render={() => loggedIn ? <Dashboard /> : <Login />} />
+            </Switch>
 		);
 	};
     render() {
-        const { loading } = this.props;
+        const { loading, loggedIn } = this.props;
         return (
             <BrowserRouter className="App">
                 <div className="App">
                     <LoadingBar style={{ backgroundColor: '#76d8c7', height: '5px' }}/>
                     {
-                        loading 
+                        loading
                         ?
                          <div>Espere</div>
-                        :   
-                        this.getRoute()
+                        :
+                        this.getRoute(loggedIn)
                     }
                 </div>
             </BrowserRouter>
@@ -46,11 +39,12 @@ class App extends Component {
     }
 }
 
-const mapDispatchToProps = { getAllUsers };
+const mapDispatchToProps = { handleInitialData };
 
-function mapStateToProps({ users }) {
+function mapStateToProps({ users, authedUser }) {
     return {
         loading: users === null,
+        loggedIn: authedUser !== null,
         users
     }
 }

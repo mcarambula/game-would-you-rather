@@ -9,7 +9,7 @@ export function handleInitialData () {
     return getInitialData()
       .then(({ users, questions }) => {
         dispatch(getAllUsers(users));
-        dispatch(getAllQuestions(tweets));
+        dispatch(getAllQuestions(questions));
         dispatch(hideLoading());
       })
   }
