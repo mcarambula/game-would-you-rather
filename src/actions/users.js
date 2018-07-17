@@ -4,6 +4,7 @@ import { _getUsers } from '../api/_DATA.js';
 export const GET_USERS = 'GET_USERS';
 export const ERROR_USERS = 'ERROR_USERS';
 export const SET_USER = 'SET_USER';
+export const ADD_USER_QUESTION = 'ADD_USER_QUESTION';
 
 /* Action creator */
 export const getUsers = (users) => (
@@ -13,17 +14,18 @@ export const getUsers = (users) => (
     }
 );
 
-export const setUser = (userId) => (
-    {
-        type: SET_USER,
-        userId
-    }
-);
-
 export const errorUsers = (error) => (
     {
         type: ERROR_USERS,
         error
+    }
+);
+
+export const addUserQuestion = (userId, questionId) => (
+    {
+        type: ADD_USER_QUESTION,
+        userId,
+        questionId
     }
 );
 

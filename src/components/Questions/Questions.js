@@ -16,9 +16,7 @@ class Questions extends Component {
         const q = (filter === 'unanswered') ? this.props.unaswered : this.props.answered;
         return (
             q.map(id => (
-                <Question
-                    author={users[questions[id].author].name}
-                    question={questions[id]}/>
+                <Question key={id} id={id}/>
             ))
         )
     }

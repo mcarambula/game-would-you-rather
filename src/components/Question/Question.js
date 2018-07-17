@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import './Question.css';
 
 const Question = ({ question, author, history }) => {
@@ -16,4 +17,14 @@ const Question = ({ question, author, history }) => {
     )
 }
 
-export default withRouter(Question);
+function mapStateToProps ({authedUser, users, questions}, { id }) {
+    console.log(id);
+    const question = questions[id];
+    return {
+        authedUser,
+        question: question,
+        author: users[question.author].name || ''
+    }
+}
+
+export default withRouter(connect(mapStateToProps)(Question));

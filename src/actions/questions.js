@@ -1,7 +1,8 @@
 import { showLoading, hideLoading } from 'react-redux-loading';
-import { _getQuestions } from '../api/_DATA.js';
+import { _getQuestions, _saveQuestion } from '../api/_DATA.js';
 
 export const GET_QUESTIONS = 'GET_QUESTIONS';
+export const ADD_QUESTION = 'ADD_QUESTION';
 export const ERROR_QUESTIONS = 'ERROR_QUESTIONS';
 
 /* Action creator */
@@ -18,6 +19,13 @@ export const errorQuestions = (error) => (
         error
     }
 );
+
+export function addQuestion (question) {
+  return {
+    type: ADD_QUESTION,
+    question,
+  }
+}
 
 /* Async action creator */
 export const getAllQuestions = () => (dispatch) => {

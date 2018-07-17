@@ -6,6 +6,7 @@ const Tabs = ({ active, options, changeTab }) => (
         {
             options.map((option, index) => (
                 <div
+                    key={index}
                     className={`tab ${active === index ? 'active' : ''}`}
                     onClick={ () => changeTab(index)}>
                     {option}

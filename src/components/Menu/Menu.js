@@ -9,15 +9,15 @@ class Menu extends Component {
     }
     goTo = (index, path) => {
         this.setState({ active: index });
-        this.props.history.push(path);
+        this.props.history.push(`/${path}`);
     }
     render() {
         const { active } = this.state;
         return (
             <div className='menu'>
-                { 
+                {
                     Object.keys(menu).map((menuItem, i) => (
-                        <div 
+                        <div
                             key={i}
                             className={`item ${active === i ? 'active' : ''}`}
                             onClick={() => this.goTo(i, menu[i].path) }>

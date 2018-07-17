@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Logo from '../Logo/Logo';
-import { setUser } from '../../actions/users';
+import { setUser } from '../../actions/authedUser';
 import './Login.css';
 
 class Login extends Component {

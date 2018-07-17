@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 import NavBar from '../NavBar/NavBar';
 import Menu from '../Menu/Menu';
 import Questions from '../Questions/Questions';
+import QuestionPage from '../Question/QuestionPage';
 import NewQuestion from '../NewQuestion/NewQuestion';
 import LeaderBoard from '../LeaderBoard/LeaderBoard';
 import { getAllQuestions } from '../../actions/questions';
-import utils from '../../utils/utils';
 import './Dashboard.css';
 
 class Dashboard extends Component {
@@ -17,6 +17,10 @@ class Dashboard extends Component {
 				<Route
 					path="/questions"
 					component={Questions}
+				/>
+                <Route
+					path="/question/:id"
+					component={QuestionPage}
 				/>
                 <Route
 					path="/leaderboard"
