@@ -14,6 +14,6 @@ import {
     }))
   }
 
-  export function saveQuestion() {
-      return _saveQuestion();
+  export function saveQuestion(question) {
+      return _saveQuestion(question);
   }

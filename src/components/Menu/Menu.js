@@ -12,6 +12,7 @@ class Menu extends Component {
         this.props.history.push(`/${path}`);
     }
     render() {
+        console.log(this.props.match.params);
         const { active } = this.state;
         return (
             <div className='menu'>
@@ -29,7 +30,6 @@ class Menu extends Component {
             </div>
         )
     }
-
 }
 
 export default withRouter(Menu);

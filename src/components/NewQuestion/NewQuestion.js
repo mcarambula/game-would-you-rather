@@ -1,15 +1,58 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import { handleAddQuestion } from '../../actions/shared';
 import { connect } from 'react-redux';
 
 class NewQuestion extends Component {
+    state = {
+        optionOne: '',
+        optionTwo: ''
+    }
+    handleOptionChange = (e, option) => {
+        e.preventDefault();
+        this.setState({
+            [option] : e.target.value
+        })
+    }
+    handleSubmit = (e) => {
+        e.preventDefault();
+        const {optionOne, optionTwo} = this.state;
+        this.props
+        .handleAddQuestion(optionOne, optionTwo)
+        .then(() => this.props.history.push('questions'));
+    }
     render() {
+        const { optionOne, optionTwo } = this.state;
         return (
             <div className='New-Question'>
-                New Question
+                <h1>Would You Rather...</h1>
+                <form onSubmit={this.handleSubmit}>
+                    <div>
+                        <input
+                            name='optionOne'
+                            type='text'
+                            value={optionOne}
+                            placeholder='Option one'
+                            onChange={(e) => this.handleOptionChange(e, 'optionOne')}
+                         />
+                     </div>
+                     <div>
+                         <input
+                             name='optionTwo'
+                             type='text'
+                             value={optionTwo}
+                             placeholder='Option two'
+                             onChange={(e) => this.handleOptionChange(e, 'optionTwo')}
+                          />
+                     </div>
+                      <button disabled={optionOne === '' || optionTwo === ''}>Submit</button>
+                    </form>
             </div>
         )
     }
 }
+
+const mapDispatchToProps = { handleAddQuestion };
 
 function mapStateToProps({ users }) {
     return {
@@ -17,5 +60,4 @@ function mapStateToProps({ users }) {
     }
 }
 
-
-export default connect(mapStateToProps)(NewQuestion);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NewQuestion));

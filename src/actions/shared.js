@@ -13,12 +13,12 @@ export const handleInitialData = () => (dispatch) => {
             })
 }
 
-export const handleAddQuestion = (optionOne, optionTwo) => (dispatch, getState) => {
-    const { authedUser } = getState();
+export const handleAddQuestion = (optionOneText, optionTwoText) => (dispatch, getState) => {
     dispatch(showLoading());
+    const { authedUser } = getState();
     const question = {
-        optionOne,
-        optionTwo,
+        optionOneText,
+        optionTwoText,
         author: authedUser
     };
     return saveQuestion(question)
