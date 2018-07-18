@@ -27,7 +27,7 @@ class Dashboard extends Component {
 					component={LeaderBoard}
 				/>
                 <Route
-                    path="/new-question"
+                    path="/add"
                     component={NewQuestion}
                 />
 			</Switch>

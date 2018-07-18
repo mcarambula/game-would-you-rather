@@ -1,0 +1,53 @@
+.leaderboard {
+    margin: 10px auto;
+}
+.leaderboard h3 {
+    margin: 0 auto;
+    transform: translateY(-50%);
+    background: #3a3341;
+    color: white;
+    padding: 8px;
+    text-align: center;
+    width: 60%;
+}
+.leaderboard-item {
+    padding: 0 10px 10px;
+    background: white;
+    margin: 25px 0px;
+    border: 1px solid gainsboro;
+    border-radius: 2px;
+}
+.leaderboard .row {
+    display: flex;
+    align-items: center;
+}
+.leaderboard .column {
+    display: flex;
+    flex-direction: column;
+    padding: 0 35px 0 15px;
+    text-align: left;
+}
+.leaderboard-item img {
+    width: 50px;
+}
+.questions-report {
+    padding: 5px 35px 5px 15px;
+    text-align: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.score {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: -10px;
+}
+.score > div {
+    text-align: center;
+    padding: 0 30px;
+    background: #007d72;
+    line-height: 42px;
+    color: white;
+    border-radius: 2px;
+}

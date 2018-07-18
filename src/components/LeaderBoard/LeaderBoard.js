@@ -1,18 +1,33 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import './LeaderBoard.css';
 
-class LeaderBoard extends PureComponent {
+class LeaderBoard extends Component {
   render() {
     const { positions, users } = this.props;
     return (
-        <div>
-              { positions.map((user, index) =>
-                <div key={user.id}>
-                  <div>{users[user.id].name}</div>
-                  <div>{user.created}</div>
-                  <div>{user.answered}</div>
-              </div>)
+        <div className='leaderboard'>
+              { positions.map((userLeaderBoard, index) => {
+                      const user = users[userLeaderBoard.id];
+                      const score = userLeaderBoard.created + userLeaderBoard.answered;
+                      return (
+                            <div className='leaderboard-item' key={userLeaderBoard.id}>
+                                <h3>{user.name}</h3>
+                                <div className='row'>
+                                      <img src={user.avatarURL} alt={user.name} />
+                                      <div className='column'>
+                                          <div>Created Questions: {userLeaderBoard.created}</div>
+                                          <div>Answered Questions: {userLeaderBoard.answered}</div>
+                                      </div>
+                                      <div className='score'>
+                                          Score
+                                          <div>{score}</div>
+                                      </div>
+                                </div>
+                            </div>
+                            )
+                    })
               }
         </div>
     );

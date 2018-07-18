@@ -5,7 +5,7 @@ const menu = {
     },
     1: {
         title: 'Create a Question',
-        path: 'new-question'
+        path: 'add'
     },
     2: {
         title: 'Leader Board',
