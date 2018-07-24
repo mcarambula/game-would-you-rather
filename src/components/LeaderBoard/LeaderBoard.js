@@ -35,7 +35,6 @@ class LeaderBoard extends Component {
 }
 
 function mapStateToProps ({ users }) {
-    console.log(users);
     const positions = Object.keys(users).map(id => ({
         id,
         created : (users[id].questions) ? users[id].questions.length : 0,

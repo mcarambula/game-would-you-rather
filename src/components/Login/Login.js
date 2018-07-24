@@ -42,7 +42,15 @@ class Login extends Component {
         return (
             <div className='Login'>
                 <form className='login-box' onSubmit={this.handleSubmit}>
-                    <div className='sign-in'>Sign In</div>
+                    <div className='sign-in'>
+                        <div className='line-colors'>
+                            <div className='div-1' />
+                            <div className='div-2' />
+                            <div className='div-3' />
+                            <div className='div-4' />
+                        </div>
+
+                        Sign In</div>
                     <Logo />
                     <div className='inner-box'>
                         <select value={this.state.user} onChange={(e)=> this.setState({user: e.target.value})}>

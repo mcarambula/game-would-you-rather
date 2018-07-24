@@ -1,6 +1,7 @@
 .menu {
     display: flex;
     flex-direction: column;
+    min-width: 300px;
     width: 300px;
     background: white;
     box-shadow: 4px 0 5px -2px #dddddd;

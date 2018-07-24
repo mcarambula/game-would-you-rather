@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { handleAddQuestion } from '../../actions/shared';
 import { connect } from 'react-redux';
+import './NewQuestion.css';
 
 class NewQuestion extends Component {
     state = {
@@ -25,28 +26,29 @@ class NewQuestion extends Component {
         const { optionOne, optionTwo } = this.state;
         return (
             <div className='New-Question'>
-                <h1>Would You Rather...</h1>
-                <form onSubmit={this.handleSubmit}>
-                    <div>
-                        <input
-                            name='optionOne'
-                            type='text'
-                            value={optionOne}
-                            placeholder='Option one'
-                            onChange={(e) => this.handleOptionChange(e, 'optionOne')}
-                         />
-                     </div>
-                     <div>
-                         <input
-                             name='optionTwo'
-                             type='text'
-                             value={optionTwo}
-                             placeholder='Option two'
-                             onChange={(e) => this.handleOptionChange(e, 'optionTwo')}
-                          />
-                     </div>
+                <div className='create-question'>
+                    <h3>Would You Rather...</h3>
+                    <form onSubmit={this.handleSubmit}>
+                        <div className='questions'>
+                            <input
+                                name='optionOne'
+                                type='text'
+                                value={optionOne}
+                                placeholder='Option one'
+                                onChange={(e) => this.handleOptionChange(e, 'optionOne')}
+                             />
+                             <span className='or'>OR</span>
+                              <input
+                                 name='optionTwo'
+                                 type='text'
+                                 value={optionTwo}
+                                 placeholder='Option two'
+                                 onChange={(e) => this.handleOptionChange(e, 'optionTwo')}
+                              />
+                         </div>
                       <button disabled={optionOne === '' || optionTwo === ''}>Submit</button>
                     </form>
+                </div>
             </div>
         )
     }
