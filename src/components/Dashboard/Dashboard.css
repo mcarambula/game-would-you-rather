@@ -1,9 +1,11 @@
 .Dashboard {
-    background: #f1f1f1;
+    background: #fbfbfb;
     height: 100%;
 }
 
 .app-content {
     display: flex;
-    height: calc(100% - 83px);
+    min-height: calc(100% - 83px);
+    height: 100%;
+    padding-top: 85px;
 }

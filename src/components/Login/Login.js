@@ -62,7 +62,7 @@ class Login extends Component {
                                 <option>Loading... </option>
                         }
                         </select>
-                        <button disabled={this.state.user !== '' ? false: true}>SUBMIT</button>
+                        <button className='button' disabled={this.state.user !== '' ? false: true}>SUBMIT</button>
                     </div>
                 </form>
             </div>

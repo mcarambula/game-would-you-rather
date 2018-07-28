@@ -4,23 +4,24 @@ import Tabs from '../Tabs/Tabs';
 import Question from '../Question/Question';
 import './Questions.css';
 
+const ANSWERED = 'answered';
+const UNASWERED = 'unanswered';
+
 class Questions extends Component {
     state = {
         active: 0
     }
+    /* Change the selected tab */
     changeTab = (id) => {
-        this.setState({active: id});
+        this.setState({ active: id });
     }
-    renderQuestions = (filter) => {
-        const { questions, users } = this.props;
-        const q = (filter === 'unanswered') ? this.props.unaswered : this.props.answered;
-        return (
-            q.map(id => (
-                <Question key={id} id={id}/>
-            ))
-        )
+    /* This function renders the questions depending the selected tab */
+    renderQuestions = (filter = UNASWERED) => {
+        const questionToShow = this.props[filter];
+        return questionToShow.map(id => <Question showAll={false} key={id} id={id}/>);
     }
     render() {
+        const { active } = this.state;
         return (
             <div className='Questions'>
                 <div>
@@ -28,16 +29,13 @@ class Questions extends Component {
                         options={['Unaswered', 'Answered']}
                         changeTab={this.changeTab}
                         active={this.state.active} />
-                    { (this.state.active === 0) && this.renderQuestions('unanswered')}
-                    { (this.state.active === 1) && this.renderQuestions('answered')}
+                    { (active === 0) && this.renderQuestions(UNASWERED)}
+                    { (active === 1) && this.renderQuestions(ANSWERED)}
                 </div>
             </div>
         )
     }
-
 }
-
-
 
 function mapStateToProps({ users, questions, authedUser }) {
     const user = authedUser;
@@ -45,11 +43,9 @@ function mapStateToProps({ users, questions, authedUser }) {
     const unaswered = Object.keys(questions).filter(id  => !questions[id].optionOne.votes.includes(user) && !questions[id].optionTwo.votes.includes(user));
     return {
         users,
-        answered: answered || [],
-        unaswered: unaswered || [],
-        questions
+        [ANSWERED]: answered || [],
+        [UNASWERED]: unaswered || []
     }
 }
-
 
 export default connect(mapStateToProps)(Questions);

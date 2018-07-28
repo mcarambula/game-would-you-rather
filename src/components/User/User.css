@@ -1,9 +1,21 @@
-.user {
+.user-nav {
     color: white;
 }
-
+.user-nav img {
+    margin-left: 10px;
+    vertical-align: middle;
+    width: 50px;
+}
+.user {
+    border-right: 1px solid #ccc;
+    color: black;
+    font-size: 16px;
+    padding: 0 10px;
+    width: 135px;
+}
 .user img {
     width: 50px;
-    vertical-align: middle;
-    margin-left: 10px;
+    display: block;
+    text-align: center;
+    margin: 0 auto 5px;
 }

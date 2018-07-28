@@ -1,12 +1,13 @@
 import React from 'react';
 import './User.css';
 
-const User = ({ user = {} }) => {
+const User = ({ user = {}, showInNav = true }) => {
+    const classInLine = (showInNav) ? 'user-nav': 'user';
     return (
-        <div className='user'>
-            {user.name}
-            <img src={user.avatarURL}  alt={user.name} />
-        </div>
+            <div className={`${classInLine}`}>
+                <img src={user.avatarURL}  alt={user.name} />
+                {user.name}
+            </div>
     )
 }
 

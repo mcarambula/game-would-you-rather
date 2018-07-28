@@ -9,25 +9,25 @@ class NewQuestion extends Component {
         optionOne: '',
         optionTwo: ''
     }
-    handleOptionChange = (e, option) => {
+    handleOptionChange = ( e, option ) => {
         e.preventDefault();
         this.setState({
-            [option] : e.target.value
+            [ option ] : e.target.value
         })
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        const {optionOne, optionTwo} = this.state;
+        const { optionOne, optionTwo } = this.state;
         this.props
-        .handleAddQuestion(optionOne, optionTwo)
-        .then(() => this.props.history.push('questions'));
+            .handleAddQuestion(optionOne, optionTwo)
+            .then(() => this.props.history.push('questions'));
     }
     render() {
         const { optionOne, optionTwo } = this.state;
         return (
             <div className='New-Question'>
                 <div className='create-question'>
-                    <h3>Would You Rather...</h3>
+                    <h3 className='question-title'>Would You Rather...</h3>
                     <form onSubmit={this.handleSubmit}>
                         <div className='questions'>
                             <input
@@ -46,7 +46,7 @@ class NewQuestion extends Component {
                                  onChange={(e) => this.handleOptionChange(e, 'optionTwo')}
                               />
                          </div>
-                      <button disabled={optionOne === '' || optionTwo === ''}>Submit</button>
+                      <button className='button' disabled={optionOne === '' || optionTwo === ''}>Submit</button>
                     </form>
                 </div>
             </div>

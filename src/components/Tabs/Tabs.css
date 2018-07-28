@@ -1,29 +1,22 @@
 .tabs-container {
-    width: 100%;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
     display: flex;
     justify-content: center;
-    background: #a5a5a5;
+    width: 100%;
 }
-
 .tab {
+    background: #ccc;
+    color: gray;
+    cursor: pointer;
     padding: 15px 0px;
     width: 50%;
-    color: #666666;
-    cursor: pointer;
 }
-
 .tab.active {
-    background: #007d72;
-    color: white;
-    position: relative;
+    background: rgba(101, 72, 136, 0.3);
+    color: black;
     font-weight: bold;
+    position: relative;
 }
-
 .tabs-content {
     background: #ffffff47;
     height: 400px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
 }

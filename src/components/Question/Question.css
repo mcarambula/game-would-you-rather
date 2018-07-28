@@ -2,7 +2,7 @@
     border-radius: 5px;
     margin: 15px 20px;
     box-shadow: 0 0 11px 0px #c1c1c1;
-    //width: 48%;
+    margin-top: 45px;
     box-sizing: border-box;
     padding-bottom: 10px;
 }
@@ -16,26 +16,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex: 1;
 }
 
 .option {
-    /*padding: 20px;
-    color: white;*/
     border-radius: 2px;
     margin-right: 10px;
 }
 
-.option-one {
-    color: #6b449a;
-}
-.option-two {
-    color: #007c71;
-}
-
 .author {
-    /*background: #3a3441;
-    padding: 10px;
-    color: white;*/
     background: #e6e6e6;
     padding: 10px;
+}
+
+.created-by {
+    font-size: 11px;
 }
