@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Tabs from '../Tabs/Tabs';
 import PreviewQuestion from '../Question/PreviewQuestion';
+import { ANSWERED, UNASWERED } from '../../utils/variables';
 import './QuestionsList.css';
-
-const ANSWERED = 'answered';
-const UNASWERED = 'unanswered';
 
 class Questions extends Component {
     state = {
@@ -39,8 +37,10 @@ class Questions extends Component {
 
 function mapStateToProps({ users, questions, authedUser }) {
     const user = authedUser;
-    const answered = Object.keys(questions).filter(id  => questions[id].optionOne.votes.includes(user) || questions[id].optionTwo.votes.includes(user));
-    const unaswered = Object.keys(questions).filter(id  => !questions[id].optionOne.votes.includes(user) && !questions[id].optionTwo.votes.includes(user));
+    let answered = Object.keys(questions).filter(id  => questions[id].optionOne.votes.includes(user) || questions[id].optionTwo.votes.includes(user));
+    answered = answered.sort(( a, b ) => questions[b].timestamp - questions[a].timestamp);
+    let unaswered = Object.keys(questions).filter(id  => !questions[id].optionOne.votes.includes(user) && !questions[id].optionTwo.votes.includes(user));
+    unaswered = unaswered.sort(( a, b ) => questions[b].timestamp - questions[a].timestamp);
     return {
         users,
         [ANSWERED]: answered || [],

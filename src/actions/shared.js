@@ -1,18 +1,20 @@
 import * as API from '../api/api';
-import { getQuestions, getAllQuestions, addQuestion, saveAnswer } from '../actions/questions';
-import { getUsers, getAllUsers, addUserQuestion, addUserAnswer } from '../actions/users';
+import * as QUESTION_ACTIONS from '../actions/questions';
+import * as USER_ACTIONS from '../actions/users';
 import { showLoading, hideLoading } from 'react-redux-loading'
 
+/* Thunk to retrieve the initial data of the application */
 export const handleInitialData = () => (dispatch) => {
     dispatch(showLoading());
     return API.getInitialData()
             .then(({ users, questions }) => {
-                dispatch(getAllUsers(users));
-                dispatch(getAllQuestions(questions));
+                dispatch(USER_ACTIONS.getAllUsers(users));
+                dispatch(QUESTION_ACTIONS.getAllQuestions(questions));
                 dispatch(hideLoading());
             })
 }
 
+/* Thunk that will be triggered when the user adds a new question */
 export const handleAddQuestion = (optionOneText, optionTwoText) => ( dispatch, getState ) => {
     dispatch(showLoading());
     const { authedUser } = getState();
@@ -23,19 +25,21 @@ export const handleAddQuestion = (optionOneText, optionTwoText) => ( dispatch, g
     };
     return API.saveQuestion(question)
             .then((formatedQuestion) => {
-                dispatch(addQuestion(formatedQuestion))
-                dispatch(addUserQuestion(authedUser, formatedQuestion.id))
+                dispatch(QUESTION_ACTIONS.addQuestion(formatedQuestion))
+                dispatch(USER_ACTIONS.addUserQuestion(authedUser, formatedQuestion.id))
             })
             .then(() => dispatch(hideLoading()));
 }
 
+/* Thunk that will be triggered when the user selects an answer */
 export const handleSaveAnswer = ( optionId, questionId ) => ( dispatch, getState ) => {
     dispatch(showLoading());
     const { authedUser } = getState();
     return  API.saveQuestionAnswer ({ authedUser, questionId, optionId })
             .then(() => {
-                dispatch(addUserAnswer(authedUser, questionId, optionId));
-                dispatch(saveAnswer(authedUser, questionId, optionId));
-                dispatch(hideLoading());
+                dispatch(USER_ACTIONS.addUserAnswer(authedUser, questionId, optionId));
+                dispatch(QUESTION_ACTIONS.saveAnswer(authedUser, questionId, optionId));
             })
+            .then(() => dispatch(hideLoading()))
+            .catch(() => dispatch(hideLoading()))
 }
