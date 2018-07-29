@@ -1,7 +1,7 @@
 import * as API from '../api/api';
 import * as QUESTION_ACTIONS from '../actions/questions';
 import * as USER_ACTIONS from '../actions/users';
-import { showLoading, hideLoading } from 'react-redux-loading'
+import { showLoading, hideLoading } from 'react-redux-loading';
 
 /* Thunk to retrieve the initial data of the application */
 export const handleInitialData = () => (dispatch) => {

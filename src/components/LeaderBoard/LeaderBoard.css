@@ -4,19 +4,23 @@
 .leaderboard h3 {
     margin: 0 auto;
     transform: translateY(-50%);
-    background: #3a3341;
+    background: gray;
     color: white;
     padding: 8px;
     text-align: center;
     width: 60%;
 }
+.leaderboard h3.selected {
+    background: #3a3341;
+}
 .leaderboard-item {
     padding: 0 10px 10px;
     background: white;
-    margin: 25px 0px;
+    margin: 35px 0px;
     border: 1px solid gainsboro;
     border-radius: 2px;
 }
+
 .leaderboard .row {
     display: flex;
     align-items: center;

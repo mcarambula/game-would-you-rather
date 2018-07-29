@@ -7,15 +7,8 @@ import { OPTION_ONE, OPTION_TWO } from '../../utils/variables';
 import './Question.css';
 
 class Question extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            questionAnswered: props.answered || false
-        }
-    }
     saveAnswer = (optionId, questionId) => {
-        this.props.handleSaveAnswer(optionId, questionId).
-        then(() => this.setState({ questionAnswered: true }));
+        this.props.handleSaveAnswer(optionId, questionId)
     }
     renderFullQuestion = (question) => {
         return (
@@ -40,23 +33,28 @@ class Question extends Component {
         const totalVotes = votesOptionOne + votesOptionTwo;
         const percentageOptionOne = (votesOptionOne / totalVotes * 100).toFixed(1);
         const percentageOptionTwo = (votesOptionTwo /  totalVotes * 100).toFixed(1);
+        const selected = this.props.selected;
         return (
             <Fragment>
                 <div
-                    className='option option-one'>
+                    className={`option option-one ${selected === OPTION_ONE ? 'selected': 'unselected'}`}>
                     <div className='text'>{question.optionOne.text}</div>
                     <div className='votes'>{votesOptionOne} out of {totalVotes} votes</div>
                     <div className='percetage'>
-                        <div style={{width: `${percentageOptionOne}%`}}>{percentageOptionOne} %</div>
+                        { percentageOptionOne > 0 &&
+                            <div style={{width: `${percentageOptionOne}%`}}>{percentageOptionOne} %</div>
+                        }
                     </div>
                 </div>
                 <span className='or'> or </span>
                 <div
-                    className='option option-two' >
+                    className={`option option-two ${selected === OPTION_TWO ? 'selected': 'unselected'}`} >
                     <div className='text'>{question.optionTwo.text}</div>
                     <div className='votes'>{votesOptionTwo} out of {totalVotes} votes</div>
                     <div className='percetage'>
-                        <div style={{width: `${percentageOptionTwo}%`}}>{percentageOptionTwo} %</div>
+                        { percentageOptionTwo > 0 &&
+                            <div style={{width: `${percentageOptionTwo}%`}}>{percentageOptionTwo} %</div>
+                        }
                     </div>
                 </div>
             </Fragment>
@@ -75,7 +73,7 @@ class Question extends Component {
                         </div>
                         <div className='options'>
                             {
-                            this.state.questionAnswered
+                            this.props.questionAnswered
                                 ?
                                     this.renderStatistics(question)
                                 :
@@ -91,11 +89,16 @@ class Question extends Component {
 
 const mapDispatchToProps = { handleSaveAnswer };
 
-function mapStateToProps ({authedUser, users, questions}, props) {
+function mapStateToProps ({ authedUser, users, questions }, props) {
     const { id } = props.match.params;
     const question = (id) ? questions[id] : {};
+    const selected = question.optionOne.votes.includes(authedUser) ? OPTION_ONE :
+                    (question.optionTwo.votes.includes(authedUser) ? OPTION_TWO : null);
+    const questionAnswered = (selected !== null);
     return {
         authedUser,
+        selected,
+        questionAnswered,
         question: question,
         author: users[question.author]|| {}
     }

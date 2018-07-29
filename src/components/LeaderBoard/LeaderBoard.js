@@ -5,7 +5,7 @@ import './LeaderBoard.css';
 
 class LeaderBoard extends Component {
   render() {
-    const { positions, users } = this.props;
+    const { positions, users, authedUser } = this.props;
     return (
         <div className='leaderboard'>
               { positions.map((userLeaderBoard, index) => {
@@ -13,7 +13,7 @@ class LeaderBoard extends Component {
                       const score = userLeaderBoard.created + userLeaderBoard.answered;
                       return (
                             <div className='leaderboard-item' key={userLeaderBoard.id}>
-                                <h3>{user.name}</h3>
+                                <h3 className={`${authedUser === user.id ? 'selected' : ''}`}>{user.name}</h3>
                                 <div className='row'>
                                       <img src={user.avatarURL} alt={user.name} />
                                       <div className='column'>
@@ -34,13 +34,14 @@ class LeaderBoard extends Component {
   }
 }
 
-function mapStateToProps ({ users }) {
+function mapStateToProps ({ authedUser, users }) {
     const positions = Object.keys(users).map(id => ({
         id,
         created : (users[id].questions) ? users[id].questions.length : 0,
         answered: (users[id].answers) ? Object.keys(users[id].answers).length : 0
     })).sort((a, b) =>  b.created + b.answered - (a.created + a.answered))
     return {
+        authedUser,
         positions,
         users
     }
