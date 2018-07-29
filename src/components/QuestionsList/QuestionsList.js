@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import Tabs from '../Tabs/Tabs';
 import PreviewQuestion from '../Question/PreviewQuestion';
@@ -6,18 +6,13 @@ import { ANSWERED, UNASWERED } from '../../utils/variables';
 import { changeTab } from '../../actions/nav';
 import './QuestionsList.css';
 
-class Questions extends Component {
-    /*state = {
-        active: 0
-    }*/
-    /* Change the selected tab */
-    changeTab = (id) => {
-        this.props.changeTab(id);
-    //    this.setState({ active: id });
+const Questions  = (props) => {
+    const changeTab = (id) => {
+        props.changeTab(id);
     }
     /* This function renders the questions depending the selected tab */
-    renderQuestions = (filter = UNASWERED) => {
-        const questionToShow = this.props[filter];
+    const renderQuestions = (filter = UNASWERED) => {
+        const questionToShow = props[filter];
         if (questionToShow.length === 0 && filter === UNASWERED) {
             return <div className='no-question'> You have answered all the questions. </div>
         }
@@ -26,21 +21,20 @@ class Questions extends Component {
         }
         return questionToShow.map(id => <PreviewQuestion key={id} id={id} />);
     }
-    render() {
-        const { activeTab } = this.props;
-        return (
-            <div className='Questions'>
-                <div>
-                    <Tabs
-                        options={['Unaswered', 'Answered']}
-                        changeTab={this.changeTab}
-                        active={activeTab} />
-                    { (activeTab === 0) && this.renderQuestions(UNASWERED)}
-                    { (activeTab === 1) && this.renderQuestions(ANSWERED)}
-                </div>
+
+    const { activeTab } = props;
+    return (
+        <div className='Questions'>
+            <div>
+                <Tabs
+                    options={['Unaswered', 'Answered']}
+                    changeTab={changeTab}
+                    active={activeTab} />
+                { (activeTab === 0) && renderQuestions(UNASWERED)}
+                { (activeTab === 1) && renderQuestions(ANSWERED)}
             </div>
-        )
-    }
+        </div>
+    )
 }
 
 const mapDispatchToProps =  { changeTab };

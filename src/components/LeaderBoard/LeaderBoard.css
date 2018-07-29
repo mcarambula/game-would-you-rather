@@ -20,7 +20,15 @@
     border: 1px solid gainsboro;
     border-radius: 2px;
 }
-
+.leaderboard-item:nth-child(3) {
+    border-left: 8px solid #c8a970;
+}
+.leaderboard-item:nth-child(2) {
+    border-left: 8px solid #b5b5b5;
+}
+.leaderboard-item:first-child {
+    border-left: 8px solid #e8cc27;
+}
 .leaderboard .row {
     display: flex;
     align-items: center;

@@ -21,21 +21,21 @@ export const errorQuestions = (error) => (
     }
 );
 
-export function addQuestion(question) {
-  return {
-    type: ADD_QUESTION,
-    question,
-  }
-}
+export const addQuestion = (question) => (
+    {
+        type: ADD_QUESTION,
+        question,
+    }
+)
 
-export function saveAnswer(authedUser, questionId, optionId) {
-    return {
+export const saveAnswer = (authedUser, questionId, optionId) => (
+    {
         type: SAVE_ANSWER,
         authedUser,
         questionId,
         optionId
     }
-}
+)
 
 /* Async action creator */
 export const getAllQuestions = () => (dispatch) => {

@@ -9,3 +9,17 @@
     width: 100%;
     z-index: 1;
 }
+.user-information {
+    color: white;
+}
+.logout, .user-nav {
+    display: inline-block;
+    padding: 0 10px;
+}
+.logout {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 13px;
+    cursor: pointer;
+}
