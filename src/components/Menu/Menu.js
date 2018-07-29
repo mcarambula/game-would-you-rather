@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { withRouter, NavLink  } from 'react-router-dom';
 import menu from '../../utils/menu';
 import './Menu.css';
@@ -15,7 +15,6 @@ const Menu  = () => (
                      {menu[i].title}
                  </NavLink>
             ))
-
         }
     </div>
 )

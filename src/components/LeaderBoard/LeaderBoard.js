@@ -1,11 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import './LeaderBoard.css';
 
-class LeaderBoard extends Component {
-  render() {
-    const { positions, users, authedUser } = this.props;
+const LeaderBoard = ({ positions, users, authedUser }) => {
     return (
         <div className='leaderboard'>
               { positions.map((userLeaderBoard, index) => {
@@ -31,7 +28,6 @@ class LeaderBoard extends Component {
               }
         </div>
     );
-  }
 }
 
 function mapStateToProps ({ authedUser, users }) {
