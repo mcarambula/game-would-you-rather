@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import './LeaderBoard.css';
 
 const LeaderBoard = ({ positions, users, authedUser }) => {
     return (
         <div className='leaderboard'>
-              { positions.map((userLeaderBoard, index) => {
+              { positions.map((userLeaderBoard) => {
                       const user = users[userLeaderBoard.id];
                       const score = userLeaderBoard.created + userLeaderBoard.answered;
                       return (
@@ -28,6 +29,18 @@ const LeaderBoard = ({ positions, users, authedUser }) => {
               }
         </div>
     );
+}
+
+LeaderBoard.propTypes =  {
+    positions: PropTypes.array.isRequired,
+	users: PropTypes.object.isRequired,
+    authedUser: PropTypes.string.isRequired
+}
+
+LeaderBoard.defaultProps =  {
+    positions: [],
+	users: {},
+    authedUser: ''
 }
 
 function mapStateToProps ({ authedUser, users }) {

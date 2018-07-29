@@ -35,7 +35,6 @@
     padding: 4px 10px;
     position: absolute;
 }
-
 .option.unselected {
     background: #d0d0d0 !important;
     color: gray;

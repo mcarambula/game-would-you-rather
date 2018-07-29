@@ -25,30 +25,28 @@ class NewQuestion extends Component {
     render() {
         const { optionOne, optionTwo } = this.state;
         return (
-            <div className='container'>
-                <div className='create-question'>
-                    <h3 className='question-title'>Would You Rather...</h3>
-                    <form onSubmit={this.handleSubmit}>
-                        <div className='questions'>
-                            <input
-                                name='optionOne'
-                                type='text'
-                                value={optionOne}
-                                placeholder='Option one'
-                                onChange={(e) => this.handleOptionChange(e, 'optionOne')}
-                             />
-                             <span className='or'>OR</span>
-                              <input
-                                 name='optionTwo'
-                                 type='text'
-                                 value={optionTwo}
-                                 placeholder='Option two'
-                                 onChange={(e) => this.handleOptionChange(e, 'optionTwo')}
-                              />
-                         </div>
-                      <button className='button' disabled={optionOne === '' || optionTwo === ''}>Submit</button>
-                    </form>
-                </div>
+            <div className='create-question'>
+                <h3 className='question-title'>Would You Rather...</h3>
+                <form onSubmit={this.handleSubmit}>
+                    <div className='questions'>
+                        <input
+                            name='optionOne'
+                            type='text'
+                            value={optionOne}
+                            placeholder='Option one'
+                            onChange={(e) => this.handleOptionChange(e, 'optionOne')}
+                         />
+                         <span className='or'>OR</span>
+                          <input
+                             name='optionTwo'
+                             type='text'
+                             value={optionTwo}
+                             placeholder='Option two'
+                             onChange={(e) => this.handleOptionChange(e, 'optionTwo')}
+                          />
+                     </div>
+                  <button className='button' disabled={optionOne === '' || optionTwo === ''}>Submit</button>
+                </form>
             </div>
         )
     }
