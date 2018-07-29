@@ -1,20 +1,33 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { unsetAuthedUser } from '../../actions/authedUser';
+import { resetTab } from '../../actions/nav';
+
 import Logo from '../Logo/Logo';
 import User from '../User/User';
 import './NavBar.css';
 
-class NavBar extends Component {
-    render() {
-        return (
-            <div className='nav-bar'>
-               <Logo navBar={true} />
-               <User user={this.props.user} />
-            </div>
-        )
+const NavBar = ({ user, unsetAuthedUser, resetTab, history }) => {
+    const logout = () => {
+        unsetAuthedUser();
+        resetTab();
+        history.replace('/');
     }
-
+    return (
+        <div className='nav-bar'>
+           <Logo navBar={true} />
+           <div className='user-information'>
+               <User user={user} /> |
+               <button
+                   className='logout'
+                   onClick={()=> logout() }>Logout</button>
+           </div>
+        </div>
+    )
 }
+
+const mapDispatchToProps = { unsetAuthedUser, resetTab };
 
 function mapStateToProps({ authedUser, users }) {
     return {
@@ -22,5 +35,4 @@ function mapStateToProps({ authedUser, users }) {
     }
 }
 
-
-export default connect(mapStateToProps)(NavBar);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NavBar));

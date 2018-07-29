@@ -37,7 +37,7 @@ export const addUserAnswer = (userId, questionId, optionId) => (
         questionId,
         optionId
     }
-)
+);
 
 /* Async action creator */
 export const getAllUsers = () => (dispatch) => {
