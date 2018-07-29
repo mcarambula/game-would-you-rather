@@ -1,6 +1,7 @@
 import * as API from '../api/api';
 import * as QUESTION_ACTIONS from '../actions/questions';
 import * as USER_ACTIONS from '../actions/users';
+import * as NAV_ACTIONS from '../actions/nav';
 import { showLoading, hideLoading } from 'react-redux-loading';
 
 /* Thunk to retrieve the initial data of the application */
@@ -25,8 +26,9 @@ export const handleAddQuestion = (optionOneText, optionTwoText) => ( dispatch, g
     };
     return API.saveQuestion(question)
             .then((formatedQuestion) => {
-                dispatch(QUESTION_ACTIONS.addQuestion(formatedQuestion))
-                dispatch(USER_ACTIONS.addUserQuestion(authedUser, formatedQuestion.id))
+                dispatch(QUESTION_ACTIONS.addQuestion(formatedQuestion));
+                dispatch(USER_ACTIONS.addUserQuestion(authedUser, formatedQuestion.id));
+                dispatch(NAV_ACTIONS.resetTab());
             })
             .then(() => dispatch(hideLoading()));
 }

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { handleSaveAnswer } from '../../actions/shared';
 import User from '../User/User';
 import QuestionStatistics from './QuestionStatistics';
-import { OPTION_ONE, OPTION_TWO } from '../../utils/variables';
+import { OPTION_ONE, OPTION_TWO, WOULD_YOU_RATHER } from '../../utils/variables';
 import './Question.css';
 
 class Question extends Component {
@@ -33,7 +33,7 @@ class Question extends Component {
         const { author, question, answerSelected } = this.props;
         return (
             <div className='question'>
-                <div className='question-title'>Would you rather...</div>
+                <div className='question-title'>{WOULD_YOU_RATHER}</div>
                 <div className='question-description'>
                     <div className='created-by'>
                         Created by:
@@ -58,7 +58,7 @@ class Question extends Component {
 
 Question.propTypes =  {
     handleSaveAnswer: PropTypes.func.isRequired,
-	activeTab: PropTypes.number.isRequired,
+    activeTab: PropTypes.number.isRequired,
     answerSelected: PropTypes.string,
     author: PropTypes.object.isRequired,
     question: PropTypes.object.isRequired,
