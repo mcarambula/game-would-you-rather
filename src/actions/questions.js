@@ -21,7 +21,7 @@ export const errorQuestions = (error) => (
     }
 );
 
-export function addQuestion (question) {
+export function addQuestion(question) {
   return {
     type: ADD_QUESTION,
     question,
