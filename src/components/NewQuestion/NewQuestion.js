@@ -28,7 +28,7 @@ class NewQuestion extends Component {
             <div className='create-question'>
                 <h3 className='question-title'>Would You Rather...</h3>
                 <form onSubmit={this.handleSubmit}>
-                    <div className='questions'>
+                    <div className='options'>
                         <input
                             name='optionOne'
                             type='text'
