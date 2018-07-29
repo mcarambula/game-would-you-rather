@@ -1,23 +1,17 @@
 .container .create-question {
     background: white;
     border: 1px solid gainsboro;
-    width: 80%;
     margin: 0 auto;
-    max-width: 850px;
 }
 
 .container form {
     padding-bottom: 30px;
 }
 
-.container .questions {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 25px;
+.create-question .options {
+    padding: 0px 20px;
 }
-
-.questions input {
+.options input {
     width: 49%;
     border: none;
     height: 100px;
@@ -28,6 +22,6 @@
     font-size: 20px;
 }
 
-.questions input:first-child {
+.options input:first-child {
     background: #f3b967;
 }

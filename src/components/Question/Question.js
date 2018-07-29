@@ -1,9 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { handleSaveAnswer } from '../../actions/shared';
 import User from '../User/User';
-import { OPTION_ONE, OPTION_TWO } from '../../utils/variables';
+import QuestionStatistics from './QuestionStatistics';
+import { OPTION_ONE, OPTION_TWO, WOULD_YOU_RATHER } from '../../utils/variables';
 import './Question.css';
 
 class Question extends Component {
@@ -27,64 +29,51 @@ class Question extends Component {
             </Fragment>
         )
     }
-    renderStatistics = (question) => {
-        const votesOptionOne = question.optionOne.votes.length;
-        const votesOptionTwo = question.optionTwo.votes.length;
-        const totalVotes = votesOptionOne + votesOptionTwo;
-        const percentageOptionOne = (votesOptionOne / totalVotes * 100).toFixed(1);
-        const percentageOptionTwo = (votesOptionTwo /  totalVotes * 100).toFixed(1);
-        const selected = this.props.selected;
-        return (
-            <Fragment>
-                <div
-                    className={`option option-one ${selected === OPTION_ONE ? 'selected': 'unselected'}`}>
-                    <div className='text'>{question.optionOne.text}</div>
-                    <div className='votes'>{votesOptionOne} out of {totalVotes} votes</div>
-                    <div className='percetage'>
-                        { percentageOptionOne > 0 &&
-                            <div style={{width: `${percentageOptionOne}%`}}>{percentageOptionOne} %</div>
-                        }
-                    </div>
-                </div>
-                <span className='or'> or </span>
-                <div
-                    className={`option option-two ${selected === OPTION_TWO ? 'selected': 'unselected'}`} >
-                    <div className='text'>{question.optionTwo.text}</div>
-                    <div className='votes'>{votesOptionTwo} out of {totalVotes} votes</div>
-                    <div className='percetage'>
-                        { percentageOptionTwo > 0 &&
-                            <div style={{width: `${percentageOptionTwo}%`}}>{percentageOptionTwo} %</div>
-                        }
-                    </div>
-                </div>
-            </Fragment>
-        )
-    }
     render() {
-        const { author, question } = this.props;
+        const { author, question, answerSelected } = this.props;
         return (
-            <div className='container'>
-                <div className='question'>
-                    <div className='question-title'>Would you rather...</div>
-                    <div className='question-description'>
-                        <div className='created-by'>
-                            Created by:
-                            <User user={author} showInNav={false} />
-                        </div>
-                        <div className='options'>
-                            {
-                            this.props.questionAnswered
-                                ?
-                                    this.renderStatistics(question)
-                                :
-                                    this.renderFullQuestion(question)
-                            }
-                         </div>
+            <div className='question'>
+                <div className='question-title'>{WOULD_YOU_RATHER}</div>
+                <div className='question-description'>
+                    <div className='created-by'>
+                        Created by:
+                        <User user={author} showInNav={false} />
                     </div>
+                    <div className='options'>
+                        {
+                        this.props.questionAnswered
+                            ?
+                                <QuestionStatistics
+                                        question={question}
+                                        answerSelected={answerSelected} />
+                            :
+                                this.renderFullQuestion(question)
+                        }
+                     </div>
                 </div>
             </div>
         )
     }
+}
+
+Question.propTypes =  {
+    handleSaveAnswer: PropTypes.func.isRequired,
+    activeTab: PropTypes.number.isRequired,
+    answerSelected: PropTypes.string,
+    author: PropTypes.object.isRequired,
+    question: PropTypes.object.isRequired,
+    authedUser: PropTypes.string.isRequired,
+    questionAnswered: PropTypes.bool
+}
+
+Question.defaultProps =  {
+    handleSaveAnswer: () => {},
+	activeTab: 0,
+    answerSelected: '',
+    author: {},
+    question: {},
+    authedUser: '',
+    questionAnswered: false
 }
 
 const mapDispatchToProps = { handleSaveAnswer };
@@ -92,12 +81,13 @@ const mapDispatchToProps = { handleSaveAnswer };
 function mapStateToProps ({ authedUser, users, questions }, props) {
     const { id } = props.match.params;
     const question = (id) ? questions[id] : {};
-    const selected = question.optionOne.votes.includes(authedUser) ? OPTION_ONE :
+    /* Determinate the answer selected by the user, in case the user already did */
+    const answerSelected = question.optionOne.votes.includes(authedUser) ? OPTION_ONE :
                     (question.optionTwo.votes.includes(authedUser) ? OPTION_TWO : null);
-    const questionAnswered = (selected !== null);
+    const questionAnswered = (answerSelected !== null);
     return {
         authedUser,
-        selected,
+        answerSelected,
         questionAnswered,
         question: question,
         author: users[question.author]|| {}

@@ -1,0 +1,18 @@
+.not-found {
+    align-items: center;
+    background: #3a3341;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    width: 100%;
+    color: white;
+    font-size: 18px;
+    flex-direction: column;
+}
+.not-found a {
+    color: #f3b967;
+}
+.not-found .text-404 {
+    font-size: 140px;
+    margin-bottom: 20px;
+}

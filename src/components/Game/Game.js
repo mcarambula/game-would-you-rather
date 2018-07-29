@@ -8,26 +8,31 @@ import Question from '../Question/Question';
 import NewQuestion from '../NewQuestion/NewQuestion';
 import LeaderBoard from '../LeaderBoard/LeaderBoard';
 import { getAllQuestions } from '../../actions/questions';
-import './Dashboard.css';
+import './Game.css';
 
-class Dashboard extends Component {
+class Game extends Component {
     getRoute = () => {
 		return (
 			<Switch>
+                <Route
+                    exact
+                    path='/'
+                    component={QuestionsList}
+                />
 				<Route
-					path="/questions"
+					path='/questions'
 					component={QuestionsList}
 				/>
                 <Route
-					path="/question/:id"
+					path='/question/:id'
 					component={Question}
 				/>
                 <Route
-					path="/leaderboard"
+					path='/leaderboard'
 					component={LeaderBoard}
 				/>
                 <Route
-                    path="/add"
+                    path='/add'
                     component={NewQuestion}
                 />
 			</Switch>
@@ -35,12 +40,14 @@ class Dashboard extends Component {
 	}
     render() {
         return (
-            <BrowserRouter basename='dashboard'>
+            <BrowserRouter basename='game'>
                 <div className='Dashboard'>
                     <NavBar />
                     <div className='app-content'>
                         <Menu />
-                        { this.getRoute() }
+                        <div className='container'>
+                            { this.getRoute() }
+                        </div>
                     </div>
                 </div>
             </BrowserRouter>
@@ -51,12 +58,11 @@ class Dashboard extends Component {
 
 const mapDispatchToProps = { getAllQuestions };
 
-function mapStateToProps({ authedUser, questions, users }) {
+function mapStateToProps({ questions, users }) {
     return {
         questions,
         users
     }
 }
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(Game);

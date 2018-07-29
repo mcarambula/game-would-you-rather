@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Tabs.css';
 
 const Tabs = ({ active, options, changeTab }) => (
@@ -15,5 +16,17 @@ const Tabs = ({ active, options, changeTab }) => (
         }
     </div>
 )
+
+Tabs.propTypes =  {
+    active: PropTypes.number.isRequired,
+    options: PropTypes.array.isRequired,
+    changeTab: PropTypes.func.isRequired ,
+}
+
+Tabs.defaultProps =  {
+    active: 0,
+    options: [],
+    changeTab: () => {}
+}
 
 export default Tabs;

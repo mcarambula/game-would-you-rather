@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Logo from '../Logo/Logo';
@@ -8,14 +9,19 @@ import './Login.css';
 class Login extends Component {
     state = {
         user: ''
-    };
-    componentDidMount() {
-       /*const userId = localStorage.getItem('wy-userId');
-        if (userId !== null) {
-            this.props.setUser(userId);
-            this.props.history.push('/dashboard');
-        }*/
     }
+    static defaultProps = {
+        setUser: () => {},
+		history: {},
+        users: {},
+        loading: false
+	}
+	static propTypes = {
+		setUser: PropTypes.func,
+		history: PropTypes.object,
+        users: PropTypes.object,
+        loading: PropTypes.bool
+	}
     renderUsers(userArray, users) {
         return (
             <Fragment>
@@ -32,9 +38,8 @@ class Login extends Component {
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        localStorage.setItem('wy-userId', JSON.stringify(this.state.user));
         this.props.setUser(this.state.user);
-        this.props.history.push('/dashboard/questions');
+        this.props.history.push('/game/questions');
     }
     render() {
         const { users, loading } = this.props;
@@ -49,8 +54,8 @@ class Login extends Component {
                             <div className='div-3' />
                             <div className='div-4' />
                         </div>
-
-                        Sign In</div>
+                        Sign In
+                    </div>
                     <Logo />
                     <div className='inner-box'>
                         <select value={this.state.user} onChange={(e)=> this.setState({user: e.target.value})}>
@@ -68,9 +73,7 @@ class Login extends Component {
             </div>
         )
     }
-
 }
-
 
 const mapDispatchToProps = { setUser };
 

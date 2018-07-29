@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { unsetAuthedUser } from '../../actions/authedUser';
 import { resetTab } from '../../actions/nav';
 
@@ -25,6 +26,20 @@ const NavBar = ({ user, unsetAuthedUser, resetTab, history }) => {
            </div>
         </div>
     )
+}
+
+NavBar.propTypes = {
+    unsetAuthedUser: PropTypes.func.isRequired,
+    resetTab: PropTypes.func.isRequired,
+    history: PropTypes.object.isRequired,
+    user: PropTypes.object.isRequired
+}
+
+NavBar.defaultProps = {
+    unsetAuthedUser: () => {},
+    resetTab: () => {},
+    history: {},
+    user: {}
 }
 
 const mapDispatchToProps = { unsetAuthedUser, resetTab };
