@@ -1,10 +1,4 @@
-.New-Question {
-    margin: 0 auto;
-    margin-top: 40px;
-    width: 100%;
-}
-
-.New-Question .create-question {
+.container .create-question {
     background: white;
     border: 1px solid gainsboro;
     width: 80%;
@@ -12,24 +6,15 @@
     max-width: 850px;
 }
 
-.New-Question form {
+.container form {
     padding-bottom: 30px;
 }
 
-.New-Question .questions {
+.container .questions {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0 25px;
-}
-
-.New-Question .or {
-    position: absolute;
-    background: #fff;
-    color: black;
-    display: block;
-    padding: 20px;
-    border-radius: 50%;
 }
 
 .questions input {

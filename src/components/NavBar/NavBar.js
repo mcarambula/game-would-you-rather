@@ -6,7 +6,6 @@ import './NavBar.css';
 
 class NavBar extends Component {
     render() {
-        console.log(this.props);
         return (
             <div className='nav-bar'>
                <Logo navBar={true} />

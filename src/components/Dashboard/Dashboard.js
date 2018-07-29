@@ -3,8 +3,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import NavBar from '../NavBar/NavBar';
 import Menu from '../Menu/Menu';
-import Questions from '../Questions/Questions';
-import QuestionPage from '../Question/QuestionPage';
+import QuestionsList from '../QuestionsList/QuestionsList';
+import Question from '../Question/Question';
 import NewQuestion from '../NewQuestion/NewQuestion';
 import LeaderBoard from '../LeaderBoard/LeaderBoard';
 import { getAllQuestions } from '../../actions/questions';
@@ -16,11 +16,11 @@ class Dashboard extends Component {
 			<Switch>
 				<Route
 					path="/questions"
-					component={Questions}
+					component={QuestionsList}
 				/>
                 <Route
 					path="/question/:id"
-					component={QuestionPage}
+					component={Question}
 				/>
                 <Route
 					path="/leaderboard"

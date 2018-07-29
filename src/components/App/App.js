@@ -25,7 +25,7 @@ class App extends Component {
         return (
             <BrowserRouter className="App">
                 <div className="App">
-                    <LoadingBar style={{ backgroundColor: '#76d8c7', height: '5px' }}/>
+                    <LoadingBar style={{ backgroundColor: '#76d8c7', height: '5px', zIndex: 2 }}/>
                     {
                         loading
                         ?

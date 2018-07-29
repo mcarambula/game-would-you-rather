@@ -1,47 +1,46 @@
 import React, { Fragment } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { handleSaveAnswer } from '../../actions/shared';
 import User from '../User/User';
 import './Question.css';
 
-const Question = ({ question, author, history, showAll = true }) => {
+const Question = ({ question, author, history, handleSaveAnswer }) => {
+    const saveAnswer = (optionId, questionId) => {
+        handleSaveAnswer(optionId, questionId)
+    }
     const renderFullQuestion = (question) => {
         return (
             <Fragment>
-                <div className='option option-one'>{question.optionOne.text}</div>
-                <span> or &nbsp;</span>
-                <div className='option option-two'>{question.optionTwo.text}</div>
+                <div className='option option-one' onClick={()=> saveAnswer('optionOne', question.id)}>{question.optionOne.text}</div>
+                <span className='or'> or </span>
+                <div className='option option-two' onClick={()=> saveAnswer('optionTwo', question.id)}>{question.optionTwo.text}</div>
             </Fragment>
         )
     }
-    const renderHalfQuestion = (question) => {
-        return (
-            <div className='option'>...{question.optionOne.text}...</div>
-        )
-    }
     return (
-        <div className='question' onClick={() => history.push(`question/${question.id}`)}>
-            <div className='question-title'>Would you rather...</div>
-            <div className='question-description'>
-                <div className='created-by'>
-                    Created by:
-                    <User user={author} showInNav={false} />
+        <div className='container'>
+            <div className='question'>
+                <div className='question-title'>Would you rather...</div>
+                <div className='question-description'>
+                    <div className='created-by'>
+                        Created by:
+                        <User user={author} showInNav={false} />
+                    </div>
+                    <div className='options'>
+                        { renderFullQuestion(question) }
+                     </div>
                 </div>
-                <div className='options'>
-                    {showAll
-                        ?
-                        renderFullQuestion(question)
-                        :
-                        renderHalfQuestion(question)
-                    }
-                 </div>
             </div>
         </div>
     )
 }
 
-function mapStateToProps ({authedUser, users, questions}, { id }) {
-    const question = questions[id];
+const mapDispatchToProps = { handleSaveAnswer };
+
+function mapStateToProps ({authedUser, users, questions}, props) {
+    const { id } = props.match.params;
+    const question = (id) ? questions[id] : {};
     return {
         authedUser,
         question: question,
@@ -49,4 +48,4 @@ function mapStateToProps ({authedUser, users, questions}, { id }) {
     }
 }
 
-export default withRouter(connect(mapStateToProps)(Question));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Question));

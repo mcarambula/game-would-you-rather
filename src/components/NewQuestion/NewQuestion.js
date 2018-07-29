@@ -25,7 +25,7 @@ class NewQuestion extends Component {
     render() {
         const { optionOne, optionTwo } = this.state;
         return (
-            <div className='New-Question'>
+            <div className='container'>
                 <div className='create-question'>
                     <h3 className='question-title'>Would You Rather...</h3>
                     <form onSubmit={this.handleSubmit}>

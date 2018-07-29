@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Tabs from '../Tabs/Tabs';
-import Question from '../Question/Question';
-import './Questions.css';
+import PreviewQuestion from '../Question/PreviewQuestion';
+import './QuestionsList.css';
 
 const ANSWERED = 'answered';
 const UNASWERED = 'unanswered';
@@ -18,7 +18,7 @@ class Questions extends Component {
     /* This function renders the questions depending the selected tab */
     renderQuestions = (filter = UNASWERED) => {
         const questionToShow = this.props[filter];
-        return questionToShow.map(id => <Question showAll={false} key={id} id={id}/>);
+        return questionToShow.map(id => <PreviewQuestion key={id} id={id}/>);
     }
     render() {
         const { active } = this.state;
