@@ -1,0 +1,49 @@
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import './LeaderBoard.css';
+
+class LeaderBoard extends Component {
+  render() {
+    const { positions, users } = this.props;
+    return (
+        <div className='leaderboard'>
+              { positions.map((userLeaderBoard, index) => {
+                      const user = users[userLeaderBoard.id];
+                      const score = userLeaderBoard.created + userLeaderBoard.answered;
+                      return (
+                            <div className='leaderboard-item' key={userLeaderBoard.id}>
+                                <h3>{user.name}</h3>
+                                <div className='row'>
+                                      <img src={user.avatarURL} alt={user.name} />
+                                      <div className='column'>
+                                          <div>Created Questions: {userLeaderBoard.created}</div>
+                                          <div>Answered Questions: {userLeaderBoard.answered}</div>
+                                      </div>
+                                      <div className='score'>
+                                          Score
+                                          <div>{score}</div>
+                                      </div>
+                                </div>
+                            </div>
+                            )
+                    })
+              }
+        </div>
+    );
+  }
+}
+
+function mapStateToProps ({ users }) {
+    const positions = Object.keys(users).map(id => ({
+        id,
+        created : (users[id].questions) ? users[id].questions.length : 0,
+        answered: (users[id].answers) ? Object.keys(users[id].answers).length : 0
+    })).sort((a, b) =>  b.created + b.answered - (a.created + a.answered))
+    return {
+        positions,
+        users
+    }
+}
+
+export default connect(mapStateToProps)(LeaderBoard);

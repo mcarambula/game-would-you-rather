@@ -1,0 +1,22 @@
+.tabs-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.tab {
+    background: #ccc;
+    color: gray;
+    cursor: pointer;
+    padding: 15px 0px;
+    width: 50%;
+}
+.tab.active {
+    background: rgba(101, 72, 136, 0.3);
+    color: black;
+    font-weight: bold;
+    position: relative;
+}
+.tabs-content {
+    background: #ffffff47;
+    height: 400px;
+}

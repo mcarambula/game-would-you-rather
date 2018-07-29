@@ -1,0 +1,11 @@
+.nav-bar{
+    align-items: center;
+    background: #3a3341;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 20px;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+}

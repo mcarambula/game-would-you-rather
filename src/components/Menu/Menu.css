@@ -1,0 +1,22 @@
+.menu {
+    background: white;
+    box-shadow: 4px 0 5px -2px #dddddd;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    left: 0px;
+    min-width: 300px;
+    padding-top: 5px;
+    position: fixed;
+    top: 83px;
+    width: 300px;
+}
+.item {
+    color: #303030;
+    cursor: pointer;
+    padding: 22px 0;
+    text-decoration: none;
+}
+.item.active {
+    background: rgba(101, 72, 136, 0.3);
+}
