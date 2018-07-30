@@ -39,7 +39,7 @@ class Login extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.setUser(this.state.user);
-        this.props.history.push('/game/questions');
+        this.props.history.push('/questions');
     }
     render() {
         const { users, loading } = this.props;

@@ -6,6 +6,8 @@ import { handleSaveAnswer } from '../../actions/shared';
 import User from '../User/User';
 import QuestionStatistics from './QuestionStatistics';
 import { OPTION_ONE, OPTION_TWO, WOULD_YOU_RATHER } from '../../utils/variables';
+import { getAnswerSelected } from '../../utils/question';
+
 import './Question.css';
 
 class Question extends Component {
@@ -43,6 +45,7 @@ class Question extends Component {
                         {
                         this.props.questionAnswered
                             ?
+                                /* Showing the statistics of the answers */
                                 <QuestionStatistics
                                         question={question}
                                         answerSelected={answerSelected} />
@@ -82,8 +85,7 @@ function mapStateToProps ({ authedUser, users, questions }, props) {
     const { id } = props.match.params;
     const question = (id) ? questions[id] : {};
     /* Determinate the answer selected by the user, in case the user already did */
-    const answerSelected = question.optionOne.votes.includes(authedUser) ? OPTION_ONE :
-                    (question.optionTwo.votes.includes(authedUser) ? OPTION_TWO : null);
+    const answerSelected = getAnswerSelected(question, authedUser);
     const questionAnswered = (answerSelected !== null);
     return {
         authedUser,
