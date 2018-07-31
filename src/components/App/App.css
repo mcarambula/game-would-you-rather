@@ -10,14 +10,16 @@ html, body, #root {
   width: 100%;
   height: 100%;
 }
-.App .App-header {
-    background-color: #222;
-    height: 150px;
-    padding: 20px;
-    color: white;
+.Dashboard {
+    background: #fbfbfb;
+    height: 100%;
 }
-.App .App-title {
-    font-size: 1.5em;
+.app-content {
+    display: flex;
+    min-height: calc(100% - 83px);
+    height: 100%;
+    padding-top: 85px;
+    padding-left: 300px;
 }
 .button {
     background: #e6e6e6;

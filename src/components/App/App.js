@@ -3,8 +3,13 @@ import PropTypes from 'prop-types';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LoadingBar from 'react-redux-loading';
+import QuestionsList from '../QuestionsList/QuestionsList';
+import Question from '../Question/Question';
+import NewQuestion from '../NewQuestion/NewQuestion';
+import LeaderBoard from '../LeaderBoard/LeaderBoard';
 import Login from '../Login/Login';
-import Game from '../Game/Game';
+import NavBar from '../NavBar/NavBar';
+import Menu from '../Menu/Menu';
 import NotFound from '../NotFound/NotFound';
 import { handleInitialData } from '../../actions/shared';
 import './App.css';
@@ -23,15 +28,41 @@ class App extends Component {
         this.props.handleInitialData();
     }
     /* Will help to determinate the appropiate route */
-    getRoute = (loggedIn) => {
+    getLoggedInRoute = () => {
 		return (
 			<Switch>
-                <Route path='/' exact render={() => loggedIn ? <Game /> : <Login />} />
-                <Route path='/game' render={() => loggedIn ? <Game /> : <Login />} />
+                <Route
+					path='/questions'
+					component={QuestionsList}
+				/>
+                <Route
+					path='/question/:id'
+					component={Question}
+				/>
+                <Route
+					path='/leaderboard'
+					component={LeaderBoard}
+				/>
+                <Route
+                    path='/add'
+                    component={NewQuestion}
+                />
                 <Route component={NotFound} />
             </Switch>
 		);
 	}
+    getNotLoggedInRoute = () => {
+        return (
+			<Switch>
+                <Route
+					path='/'
+                    exact
+					component={Login}
+				/>
+                <Route component={NotFound} />
+            </Switch>
+		);
+    }
     render() {
         const { loggedIn } = this.props;
         return (
@@ -39,7 +70,19 @@ class App extends Component {
                 <div className='App'>
                     <LoadingBar style={{ backgroundColor: '#76d8c7', height: '5px', zIndex: 2 }}/>
                     {
-                        this.getRoute(loggedIn)
+                        !loggedIn
+                        ?
+                        this.getNotLoggedInRoute()
+                        :
+                        <div className='Dashboard'>
+                            <NavBar />
+                            <div className='app-content'>
+                                <Menu />
+                                <div className='container'>
+                                    {this.getLoggedInRoute()}
+                                </div>
+                            </div>
+                        </div>
                     }
                 </div>
             </BrowserRouter>

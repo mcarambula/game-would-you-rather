@@ -14,7 +14,7 @@
     display: flex;
     flex-direction: column;
     font-size: 16px;
-    min-height: 140px;
+    min-height: 130px;
     justify-content: center;
     margin: 0 auto;
     text-align: center;
@@ -46,10 +46,10 @@
     background: #34a794;
 }
 .option:first-child{
-    background: #f3b967;
+    background: #d0c8db;
 }
 .option.selectable:first-child:hover{
-    background: #c4924b;
+    background: #b7aac8;
 }
 .options {
     align-items: center;
