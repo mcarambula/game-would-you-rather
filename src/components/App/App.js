@@ -32,11 +32,12 @@ class App extends Component {
 		return (
 			<Switch>
                 <Route
+                    exact
 					path='/questions'
 					component={QuestionsList}
 				/>
                 <Route
-					path='/question/:id'
+					path='/questions/:id'
 					component={Question}
 				/>
                 <Route

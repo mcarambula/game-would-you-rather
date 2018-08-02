@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Logo from '../Logo/Logo';
 import { setUser } from '../../actions/authedUser';
@@ -70,6 +70,7 @@ class Login extends Component {
                                 <option>Loading... </option>
                         }
                         </select>
+                        <Link className='create-user' to='/create-user'>Create a new user</Link>
                         <button className='button' disabled={this.state.user !== '' ? false: true}>SUBMIT</button>
                     </div>
                 </form>
