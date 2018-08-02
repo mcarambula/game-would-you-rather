@@ -14,13 +14,15 @@ class Login extends Component {
         setUser: () => {},
 		history: {},
         users: {},
-        loading: false
+        loading: false,
+        pathname: ''
 	}
 	static propTypes = {
 		setUser: PropTypes.func,
 		history: PropTypes.object,
         users: PropTypes.object,
-        loading: PropTypes.bool
+        loading: PropTypes.bool,
+        pathname: PropTypes.string
 	}
     renderUsers(userArray, users) {
         return (
@@ -39,7 +41,8 @@ class Login extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.setUser(this.state.user);
-        this.props.history.push('/questions');
+        const goTo = (this.props.pathname && this.props.pathname !== '/') ? this.props.pathname : '/questions';
+        this.props.history.push(goTo);
     }
     render() {
         const { users, loading } = this.props;
@@ -77,10 +80,11 @@ class Login extends Component {
 
 const mapDispatchToProps = { setUser };
 
-function mapStateToProps({ users }) {
+function mapStateToProps({ users }, props) {
     return {
         loading: users === null,
-        users
+        users,
+        pathname: props.location.pathname || ''
     }
 }
 

@@ -56,8 +56,7 @@ class App extends Component {
 			<Switch>
                 <Route
 					path='/'
-                    exact
-					component={Login}
+                    component={Login}
 				/>
                 <Route component={NotFound} />
             </Switch>
