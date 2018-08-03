@@ -2,9 +2,10 @@
     color: white;
 }
 .user-nav img {
-    margin-left: 10px;
+    margin-right: 10px;
     vertical-align: middle;
-    width: 50px;
+    width: 44px;
+    border-radius: 50%;
 }
 .user {
     border-right: 1px solid #ccc;
@@ -18,4 +19,5 @@
     display: block;
     text-align: center;
     margin: 0 auto 5px;
+    border-radius: 50%;
 }

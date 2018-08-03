@@ -6,8 +6,9 @@ export const ERROR_USERS = 'ERROR_USERS';
 export const SET_USER = 'SET_USER';
 export const ADD_USER_QUESTION = 'ADD_USER_QUESTION';
 export const ADD_USER_ANSWER = 'ADD_USER_ANSWER';
+export const CREATE_USER = 'CREATE_USER';
 
-/* Action creator */
+/* Action creator to get the list of users */
 export const getUsers = (users) => (
     {
         type: GET_USERS,
@@ -15,13 +16,7 @@ export const getUsers = (users) => (
     }
 );
 
-export const errorUsers = (error) => (
-    {
-        type: ERROR_USERS,
-        error
-    }
-);
-
+/* Action creator to add a new question on the user state */
 export const addUserQuestion = (userId, questionId) => (
     {
         type: ADD_USER_QUESTION,
@@ -30,12 +25,21 @@ export const addUserQuestion = (userId, questionId) => (
     }
 );
 
+/* Action creator to add the answer selected on the user state */
 export const addUserAnswer = (userId, questionId, optionId) => (
     {
         type: ADD_USER_ANSWER,
         userId,
         questionId,
         optionId
+    }
+);
+
+/* Action creator to create a new user */
+export const createUser = (user) => (
+    {
+        type: CREATE_USER,
+        user
     }
 );
 
@@ -49,7 +53,7 @@ export const getAllUsers = () => (dispatch) => {
         .then(() => {
             dispatch(hideLoading());
         })
-        .catch((error) => {
-            dispatch(errorUsers(error))
+        .catch(() => {
+            dispatch(hideLoading())
         })
 }

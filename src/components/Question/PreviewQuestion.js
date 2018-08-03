@@ -8,7 +8,7 @@ import './Question.css';
 
 const PreviewQuestion = ({ question, author, history }) => {
     return (
-        <div className='question' onClick={() => history.push(`question/${question.id}`)}>
+        <div className='question' onClick={() => history.push(`questions/${question.id}`)}>
             <div className='question-title'>{WOULD_YOU_RATHER}</div>
             <div className='question-description'>
                 <div className='created-by'>

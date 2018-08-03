@@ -6,7 +6,7 @@ import { handleSaveAnswer } from '../../actions/shared';
 import User from '../User/User';
 import QuestionStatistics from './QuestionStatistics';
 import { OPTION_ONE, OPTION_TWO, WOULD_YOU_RATHER } from '../../utils/variables';
-import { getAnswerSelected } from '../../utils/question';
+import { getAnswerSelected } from '../../utils/general';
 
 import './Question.css';
 

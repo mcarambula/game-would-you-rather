@@ -5,10 +5,10 @@ import './User.css';
 const User = ({ user, showInNav }) => {
     const classInLine = (showInNav) ? 'user-nav': 'user';
     return (
-            <div className={`${classInLine}`}>
-                <img src={user.avatarURL}  alt={user.name} />
-                {user.name}
-            </div>
+        <div className={`${classInLine}`}>
+           <img src={user.avatarURL}  alt={user.name} />
+           {user.name}
+       </div>
     )
 }
 

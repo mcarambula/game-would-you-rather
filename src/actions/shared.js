@@ -45,3 +45,14 @@ export const handleSaveAnswer = ( optionId, questionId ) => ( dispatch, getState
             .then(() => dispatch(hideLoading()))
             .catch(() => dispatch(hideLoading()))
 }
+
+/* Thunk that will be triggered when a new user is created */
+export const handleCreateUser = (firstname, lastname) => dispatch => {
+    dispatch(showLoading());
+    return  API.createUser({ firstname, lastname })
+            .then((formattedUser) => {
+                dispatch(USER_ACTIONS.createUser(formattedUser));
+            })
+            .then(() => dispatch(hideLoading()))
+            .catch(() => dispatch(hideLoading()))
+}
