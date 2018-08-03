@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { getLeaderBoard } from '../../utils/general';
 import './LeaderBoard.css';
 
 const LeaderBoard = ({ positions, users, authedUser }) => {
@@ -44,11 +45,7 @@ LeaderBoard.defaultProps =  {
 }
 
 function mapStateToProps ({ authedUser, users }) {
-    const positions = Object.keys(users).map(id => ({
-        id,
-        created : (users[id].questions) ? users[id].questions.length : 0,
-        answered: (users[id].answers) ? Object.keys(users[id].answers).length : 0
-    })).sort((a, b) =>  b.created + b.answered - (a.created + a.answered))
+    const positions = getLeaderBoard(users);
     return {
         authedUser,
         positions,
