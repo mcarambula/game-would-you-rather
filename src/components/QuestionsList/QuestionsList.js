@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Tabs from '../Tabs/Tabs';
 import PreviewQuestion from '../Question/PreviewQuestion';
 import { ANSWERED, UNASWERED } from '../../utils/variables';
-import * as QUESTIONS_UTILS from '../../utils/question';
+import * as QUESTIONS_UTILS from '../../utils/general';
 import { changeTab } from '../../actions/nav';
 import './QuestionsList.css';
 

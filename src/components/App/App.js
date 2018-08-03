@@ -8,6 +8,7 @@ import Question from '../Question/Question';
 import NewQuestion from '../NewQuestion/NewQuestion';
 import LeaderBoard from '../LeaderBoard/LeaderBoard';
 import Login from '../Login/Login';
+import CreateUser from '../Login/CreateUser';
 import NavBar from '../NavBar/NavBar';
 import Menu from '../Menu/Menu';
 import NotFound from '../NotFound/NotFound';
@@ -27,9 +28,9 @@ class App extends Component {
         /* Retreiving initial information for the application */
         this.props.handleInitialData();
     }
-    /* Will help to determinate the appropiate route */
+    /* Will help to determinate the appropiate route if the user is logged in */
     getLoggedInRoute = () => {
-		return (
+        return (
 			<Switch>
                 <Route
                     exact
@@ -52,14 +53,18 @@ class App extends Component {
             </Switch>
 		);
 	}
+    /* Will help to determinate the appropiate route if the user hasn't logged in */
     getNotLoggedInRoute = () => {
         return (
 			<Switch>
                 <Route
-					path='/'
+                    path='/create-user'
+                    component={CreateUser}
+                />
+                <Route
+                    path='/'
                     component={Login}
 				/>
-                <Route component={NotFound} />
             </Switch>
 		);
     }
@@ -71,18 +76,20 @@ class App extends Component {
                     <LoadingBar style={{ backgroundColor: '#76d8c7', height: '5px', zIndex: 2 }}/>
                     {
                         !loggedIn
-                        ?
-                        this.getNotLoggedInRoute()
-                        :
-                        <div className='Dashboard'>
-                            <NavBar />
-                            <div className='app-content'>
-                                <Menu />
-                                <div className='container'>
-                                    {this.getLoggedInRoute()}
+                            ?
+                                this.getNotLoggedInRoute()
+                            :
+                                (
+                                <div className='Dashboard'>
+                                    <NavBar />
+                                    <div className='app-content'>
+                                        <Menu />
+                                        <div className='container'>
+                                            {this.getLoggedInRoute()}
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
+                                )
                     }
                 </div>
             </BrowserRouter>

@@ -10,7 +10,7 @@
     border: none;
     border-radius: 5px;
     font-size: 15px;
-    margin: 35px auto 0;
+    margin: 10px auto 0;
     padding: 18px;
     text-align: center;
 }
@@ -37,6 +37,8 @@
     font-size: 22px;
     padding: 0 25px 35px;
     line-height: 40px;
+    display: flex;
+    flex-direction: column;
 }
 .Login .line-colors {
     background: white;
@@ -47,6 +49,15 @@
     top: 0;
     width: 100%;
     z-index: 1;
+}
+.Login .text-input {
+    width: 100%;
+    border: none;
+    border-radius: 2px;
+    padding: 12px 10px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    font-size: 12px;
 }
 .Login .login-box {
     background: #ffffff33;
@@ -75,8 +86,8 @@
 
 .Login .create-user {
     display: block;
-    float: right;
-    color: white;
+    text-align: right;
+    color: #f3bf74;
     text-decoration: none;
-    font-size: 12px;
+    font-size: 14px;
 }

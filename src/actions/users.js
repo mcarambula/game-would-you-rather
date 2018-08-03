@@ -6,6 +6,7 @@ export const ERROR_USERS = 'ERROR_USERS';
 export const SET_USER = 'SET_USER';
 export const ADD_USER_QUESTION = 'ADD_USER_QUESTION';
 export const ADD_USER_ANSWER = 'ADD_USER_ANSWER';
+export const CREATE_USER = 'CREATE_USER';
 
 /* Action creator */
 export const getUsers = (users) => (
@@ -36,6 +37,13 @@ export const addUserAnswer = (userId, questionId, optionId) => (
         userId,
         questionId,
         optionId
+    }
+);
+
+export const createUser = (user) => (
+    {
+        type: CREATE_USER,
+        user
     }
 );
 

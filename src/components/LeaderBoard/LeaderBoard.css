@@ -2,23 +2,24 @@
     margin: 10px auto;
 }
 .leaderboard h3 {
-    margin: 0 auto;
-    transform: translateY(-50%);
     background: gray;
     color: white;
+    margin: 0 auto;
     padding: 8px;
     text-align: center;
+    transform: translateY(-50%);
     width: 60%;
 }
 .leaderboard h3.selected {
     background: #3a3341;
 }
 .leaderboard-item {
-    padding: 0 10px 10px;
     background: white;
-    margin: 35px 0px;
     border: 1px solid gainsboro;
     border-radius: 2px;
+    padding: 0 10px 10px;
+    margin: 35px auto;
+    width: 325px;
 }
 .leaderboard-item:nth-child(3) {
     border-left: 8px solid #c8a970;
@@ -30,8 +31,8 @@
     border-left: 8px solid #e8cc27;
 }
 .leaderboard .row {
-    display: flex;
     align-items: center;
+    display: flex;
 }
 .leaderboard .column {
     display: flex;
@@ -43,11 +44,11 @@
     width: 50px;
 }
 .questions-report {
-    padding: 5px 35px 5px 15px;
-    text-align: left;
+    align-items: center;
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding: 5px 35px 5px 15px;
+    text-align: left;
 }
 .score {
     display: flex;
@@ -56,10 +57,10 @@
     top: -10px;
 }
 .score > div {
-    text-align: center;
-    padding: 0 30px;
-    background: #007d72;
-    line-height: 42px;
-    color: white;
+    background: #abddd5;
     border-radius: 2px;
+    color: black;
+    line-height: 42px;
+    padding: 0 30px;
+    text-align: center;
 }

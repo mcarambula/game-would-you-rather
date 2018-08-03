@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Logo from '../Logo/Logo';
+import PropTypes from 'prop-types';
 import { setUser } from '../../actions/authedUser';
+import Top from './Top';
 import './Login.css';
 
 class Login extends Component {
@@ -38,6 +38,13 @@ class Login extends Component {
             </Fragment>
         )
     }
+    /*
+        This function handles the submission of the form.
+        - Set the user selected on the login box.
+        - Will redirect the app.
+            - If there's a pathname on the url, the app will be redirected to there.
+            - If not, the questions page will be shown
+    */
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.setUser(this.state.user);
@@ -50,16 +57,7 @@ class Login extends Component {
         return (
             <div className='Login'>
                 <form className='login-box' onSubmit={this.handleSubmit}>
-                    <div className='sign-in'>
-                        <div className='line-colors'>
-                            <div className='div-1' />
-                            <div className='div-2' />
-                            <div className='div-3' />
-                            <div className='div-4' />
-                        </div>
-                        Sign In
-                    </div>
-                    <Logo />
+                    <Top />
                     <div className='inner-box'>
                         <select value={this.state.user} onChange={(e)=> this.setState({user: e.target.value})}>
                         {

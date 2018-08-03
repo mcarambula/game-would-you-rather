@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { OPTION_ONE, OPTION_TWO } from './variables';
 
 const sortQuestions = (filteredQuestions, questions) => {
@@ -26,4 +28,19 @@ export const getAnswerSelected = (question, user) => {
         return OPTION_TWO;
     }
     return null;
+}
+
+export const capitalize = (string) => {
+    return string[0].toUpperCase() + string.slice(1).toLowerCase();
+}
+
+export const getColorLines = () => {
+    return (
+        <div className='line-colors'>
+            <div className='div-1' />
+            <div className='div-2' />
+            <div className='div-3' />
+            <div className='div-4' />
+        </div>
+    )
 }
