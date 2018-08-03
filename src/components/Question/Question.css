@@ -46,10 +46,10 @@
     background: #34a794;
 }
 .option:first-child{
-    background: #d0c8db;
+    background: #f7d59d;
 }
 .option.selectable:first-child:hover{
-    background: #b7aac8;
+    background: #dca956;
 }
 .options {
     align-items: center;
@@ -80,7 +80,7 @@
     box-sizing: border-box;
     margin: 15px 20px;
     margin-top: 45px;
-    padding-bottom: 10px;
+    padding-bottom: 25px;
 }
 .text {
     display: block;

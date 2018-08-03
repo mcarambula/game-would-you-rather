@@ -26,9 +26,9 @@ export const getUnansweredQuestions = (questions, user) => {
 
 /* This function verifies if the user has answered a question, and if so, it will return which option he chose */
 export const getAnswerSelected = (question, user) => {
-    if (question[OPTION_ONE].votes.includes(user))
+    if ( question[OPTION_ONE] && question[OPTION_ONE].votes.includes(user))
         return OPTION_ONE;
-    else if (question[OPTION_TWO].votes.includes(user)) {
+    else if (question[OPTION_TWO] && question[OPTION_TWO].votes.includes(user)) {
         return OPTION_TWO;
     }
     return null;
