@@ -24,7 +24,7 @@ class NewUser extends Component {
         e.preventDefault();
         const { firstname, lastname } = this.state;
         this.props
-            .handleCreateUser(capitalize(firstname), capitalize(lastname))
+            .handleCreateUser(capitalize(firstname.trim()), capitalize(lastname.trim()))
             .then(() => this.props.history.push('/'));
     }
     render() {

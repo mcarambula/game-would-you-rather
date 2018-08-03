@@ -21,8 +21,8 @@ html, body, #root {
     padding-left: 300px;
 }
 .button {
-    background: #e6e6e6;
-    color: black;
+    background: #ec6d60;
+    color: white;
     cursor: pointer;
     padding: 15px 20px;
     border: none;
@@ -31,7 +31,7 @@ html, body, #root {
     margin-top: 25px;
 }
 .button:disabled {
-    background: rgba(236, 236, 236, 0.7);
+    background: rgb(212, 196, 194);
     color: #717171;
 }
 /* General styling for question */

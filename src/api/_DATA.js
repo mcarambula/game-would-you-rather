@@ -150,9 +150,9 @@ function formatQuestion ({ optionOneText, optionTwoText, author }) {
 }
 
 function formatUser ({ firstname, lastname }) {
-    const id = generateUID();
+    const id = `${firstname}${lastname}`;
     return {
-        id: id,
+        id: id.toLowerCase(),
         name: `${firstname} ${lastname}`,
         avatarURL: `${avatarURL}/${id}.png`,
         answers: {},
