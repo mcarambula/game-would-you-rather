@@ -1,6 +1,3 @@
-import { showLoading, hideLoading } from 'react-redux-loading';
-import { _getUsers } from '../api/_DATA.js';
-
 export const GET_USERS = 'GET_USERS';
 export const ERROR_USERS = 'ERROR_USERS';
 export const SET_USER = 'SET_USER';
@@ -42,18 +39,3 @@ export const createUser = (user) => (
         user
     }
 );
-
-/* Async action creator */
-export const getAllUsers = () => (dispatch) => {
-    dispatch(showLoading());
-    return _getUsers()
-        .then((users) => {
-            dispatch(getUsers(users));
-        })
-        .then(() => {
-            dispatch(hideLoading());
-        })
-        .catch(() => {
-            dispatch(hideLoading())
-        })
-}

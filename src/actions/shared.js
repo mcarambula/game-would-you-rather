@@ -9,10 +9,10 @@ export const handleInitialData = () => (dispatch) => {
     dispatch(showLoading());
     return API.getInitialData()
             .then(({ users, questions }) => {
-                dispatch(USER_ACTIONS.getAllUsers(users));
-                dispatch(QUESTION_ACTIONS.getAllQuestions(questions));
+                dispatch(USER_ACTIONS.getUsers(users));
+                dispatch(QUESTION_ACTIONS.getQuestions(questions));
                 dispatch(hideLoading());
-            })
+            });
 }
 
 /* Thunk that will be triggered when the user adds a new question */
