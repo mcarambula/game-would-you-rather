@@ -1,6 +1,7 @@
 import { GET_QUESTIONS, ADD_QUESTION, SAVE_ANSWER } from '../actions/questions';
 
-export default function users (state = {}, action) {
+/* Reducer for managing questions part of the state */
+export default function questions (state = {}, action) {
     switch(action.type) {
         case GET_QUESTIONS :
             return {

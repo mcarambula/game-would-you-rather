@@ -3,6 +3,7 @@ import { GET_USERS,
         ADD_USER_ANSWER,
         CREATE_USER } from '../actions/users';
 
+/* Reducer for managing user part of the state */
 export default function users (state = null, action) {
     switch(action.type) {
         case GET_USERS :

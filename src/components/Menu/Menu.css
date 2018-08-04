@@ -17,5 +17,5 @@
     text-decoration: none;
 }
 .item.active {
-    background: rgba(101, 72, 136, 0.3);
+    background: #f1bf78;
 }

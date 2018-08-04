@@ -1,11 +1,12 @@
 import React from 'react';
-
 import { OPTION_ONE, OPTION_TWO } from './variables';
 
+/* Function to sort the questions by timestamp */
 const sortQuestions = (filteredQuestions, questions) => {
     return filteredQuestions.sort(( a, b ) => questions[b].timestamp - questions[a].timestamp);
 }
 
+/* Function to sort the position on the users on the leaderboard */
 const sortPosition = (array) => {
     return array.sort((a, b) =>  b.created + b.answered - (a.created + a.answered));
 }
@@ -26,6 +27,7 @@ export const getUnansweredQuestions = (questions, user) => {
 
 /* This function verifies if the user has answered a question, and if so, it will return which option he chose */
 export const getAnswerSelected = (question, user) => {
+    console.log(question);
     if ( question[OPTION_ONE] && question[OPTION_ONE].votes.includes(user))
         return OPTION_ONE;
     else if (question[OPTION_TWO] && question[OPTION_TWO].votes.includes(user)) {
@@ -34,20 +36,22 @@ export const getAnswerSelected = (question, user) => {
     return null;
 }
 
+/* This function iterates through all the users to check their position */
 export const getLeaderBoard = (users) => {
     const positions = Object.keys(users).map(id => ({
         id,
         created : (users[id].questions) ? users[id].questions.length : 0,
         answered: (users[id].answers) ? Object.keys(users[id].answers).length : 0
     }))
-    return sortPosition(positions)
+    return sortPosition(positions);
 }
+
 /* This function returns a capitalize string (used on the user creation method) */
 export const capitalize = (string) => {
     return string[0].toUpperCase() + string.slice(1).toLowerCase();
 }
 
-/**/
+/* This function returns a decoration div used on the login page */
 export const getColorLines = () => {
     return (
         <div className='line-colors'>
@@ -56,5 +60,5 @@ export const getColorLines = () => {
             <div className='div-3' />
             <div className='div-4' />
         </div>
-    )
+    );
 }

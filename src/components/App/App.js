@@ -9,43 +9,49 @@ import NewQuestion from '../NewQuestion/NewQuestion';
 import LeaderBoard from '../LeaderBoard/LeaderBoard';
 import Login from '../Login/Login';
 import CreateUser from '../Login/CreateUser';
-import NavBar from '../NavBar/NavBar';
-import Menu from '../Menu/Menu';
 import NotFound from '../NotFound/NotFound';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import { handleInitialData } from '../../actions/shared';
 import './App.css';
 
 class App extends Component {
     static defaultProps = {
-        handleInitialData: () => {},
-		loggedIn: false
+        handleInitialData: () => {}
 	}
 	static propTypes = {
-		handleInitialData: PropTypes.func,
-		loggedIn: PropTypes.bool
+		handleInitialData: PropTypes.func
 	}
     componentDidMount() {
         /* Retreiving initial information for the application */
         this.props.handleInitialData();
     }
     /* Will help to determinate the appropiate route if the user is logged in */
-    getLoggedInRoute = () => {
+    getRoute = () => {
         return (
-			<Switch>
+        	<Switch>
                 <Route
                     exact
-					path='/questions'
-					component={QuestionsList}
+                    path='/'
+                    component={Login}
 				/>
                 <Route
+                    path='/create-user'
+                    component={CreateUser}
+                />
+                <PrivateRoute
+                    exact
+                    path='/questions'
+					component={QuestionsList}
+				/>
+                <PrivateRoute
 					path='/questions/:id'
 					component={Question}
 				/>
-                <Route
+                <PrivateRoute
 					path='/leaderboard'
 					component={LeaderBoard}
 				/>
-                <Route
+                <PrivateRoute
                     path='/add'
                     component={NewQuestion}
                 />
@@ -53,44 +59,12 @@ class App extends Component {
             </Switch>
 		);
 	}
-    /* Will help to determinate the appropiate route if the user hasn't logged in */
-    getNotLoggedInRoute = () => {
-        return (
-			<Switch>
-                <Route
-                    path='/create-user'
-                    component={CreateUser}
-                />
-                <Route
-                    path='/'
-                    component={Login}
-				/>
-            </Switch>
-		);
-    }
     render() {
-        const { loggedIn } = this.props;
         return (
             <BrowserRouter className='App'>
                 <div className='App'>
                     <LoadingBar style={{ backgroundColor: '#76d8c7', height: '5px', zIndex: 2 }}/>
-                    {
-                        !loggedIn
-                            ?
-                                this.getNotLoggedInRoute()
-                            :
-                                (
-                                <div className='Dashboard'>
-                                    <NavBar />
-                                    <div className='app-content'>
-                                        <Menu />
-                                        <div className='container'>
-                                            {this.getLoggedInRoute()}
-                                        </div>
-                                    </div>
-                                </div>
-                                )
-                    }
+                    {this.getRoute()}
                 </div>
             </BrowserRouter>
         );
@@ -99,11 +73,4 @@ class App extends Component {
 
 const mapDispatchToProps = { handleInitialData };
 
-function mapStateToProps({ users, authedUser }) {
-    return {
-        loggedIn: authedUser !== null,
-        users
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(App);

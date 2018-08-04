@@ -83,7 +83,7 @@ const mapDispatchToProps = { handleSaveAnswer };
 
 function mapStateToProps ({ authedUser, users, questions }, props) {
     const { id } = props.match.params;
-    const question = (id) ? questions[id] : {};
+    const question = (id && questions[id]) ? questions[id] : {};
     /* Determinate the answer selected by the user, in case the user already did */
     const answerSelected = getAnswerSelected(question, authedUser);
     const questionAnswered = (answerSelected !== null);

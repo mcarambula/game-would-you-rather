@@ -1,6 +1,5 @@
 import { showLoading, hideLoading } from 'react-redux-loading';
 import { _getQuestions } from '../api/_DATA.js';
-
 export const GET_QUESTIONS = 'GET_QUESTIONS';
 export const ADD_QUESTION = 'ADD_QUESTION';
 export const ERROR_QUESTIONS = 'ERROR_QUESTIONS';

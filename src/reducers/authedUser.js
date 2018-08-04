@@ -1,6 +1,7 @@
 import { SET_USER, UNSET_AUTHED_USER } from '../actions/authedUser';
 
-export default function users (state = null, action) {
+/* Reducer for user authentication */
+export default function authedUser (state = null, action) {
     switch(action.type) {
         case SET_USER :
             return action.userId;
