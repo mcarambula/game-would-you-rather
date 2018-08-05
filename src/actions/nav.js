@@ -13,7 +13,6 @@ export const changeTab = (activeTab) => (
         activeTab
     }
 );
-
 /* Action creator that allows to set the initial tab after a user logout */
 export const resetTab = () => (
     {

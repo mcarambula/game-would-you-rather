@@ -25,7 +25,7 @@ class App extends Component {
         /* Retreiving initial information for the application */
         this.props.handleInitialData();
     }
-    /* Will help to determinate the appropiate route if the user is logged in */
+    /* Will help to determinate the appropiate route */
     getRoute = () => {
         return (
         	<Switch>

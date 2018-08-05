@@ -10,7 +10,6 @@ export const getQuestions = (questions) => (
         questions
     }
 );
-
 /* Action creator to add a new question */
 export const addQuestion = (question) => (
     {
@@ -18,7 +17,6 @@ export const addQuestion = (question) => (
         question,
     }
 );
-
 /* Action creator to save the answer selected by a user on a question */
 export const saveAnswer = (authedUser, questionId, optionId) => (
     {

@@ -20,7 +20,7 @@ const Tabs = ({ active, options, changeTab }) => (
 Tabs.propTypes =  {
     active: PropTypes.number.isRequired,
     options: PropTypes.array.isRequired,
-    changeTab: PropTypes.func.isRequired ,
+    changeTab: PropTypes.func.isRequired
 }
 
 Tabs.defaultProps =  {

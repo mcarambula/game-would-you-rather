@@ -4,7 +4,6 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { unsetAuthedUser } from '../../actions/authedUser';
 import { resetTab } from '../../actions/nav';
-
 import Logo from '../Logo/Logo';
 import User from '../User/User';
 import './NavBar.css';

@@ -14,7 +14,6 @@ export const handleInitialData = () => (dispatch) => {
                 dispatch(hideLoading());
             });
 }
-
 /* Thunk that will be triggered when the user adds a new question */
 export const handleAddQuestion = (optionOneText, optionTwoText) => ( dispatch, getState ) => {
     dispatch(showLoading());
@@ -32,7 +31,6 @@ export const handleAddQuestion = (optionOneText, optionTwoText) => ( dispatch, g
             })
             .then(() => dispatch(hideLoading()));
 }
-
 /* Thunk that will be triggered when the user selects an answer */
 export const handleSaveAnswer = ( optionId, questionId ) => ( dispatch, getState ) => {
     dispatch(showLoading());
@@ -45,7 +43,6 @@ export const handleSaveAnswer = ( optionId, questionId ) => ( dispatch, getState
             .then(() => dispatch(hideLoading()))
             .catch(() => dispatch(hideLoading()))
 }
-
 /* Thunk that will be triggered when a new user is created */
 export const handleCreateUser = (firstname, lastname) => dispatch => {
     dispatch(showLoading());

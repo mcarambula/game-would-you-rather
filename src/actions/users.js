@@ -12,7 +12,6 @@ export const getUsers = (users) => (
         users
     }
 );
-
 /* Action creator to add a new question on the user state */
 export const addUserQuestion = (userId, questionId) => (
     {
@@ -21,7 +20,6 @@ export const addUserQuestion = (userId, questionId) => (
         questionId
     }
 );
-
 /* Action creator to add the answer selected on the user state */
 export const addUserAnswer = (userId, questionId, optionId) => (
     {
@@ -31,7 +29,6 @@ export const addUserAnswer = (userId, questionId, optionId) => (
         optionId
     }
 );
-
 /* Action creator to create a new user */
 export const createUser = (user) => (
     {

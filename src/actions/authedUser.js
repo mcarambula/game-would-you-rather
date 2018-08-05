@@ -8,7 +8,6 @@ export const setUser = (userId) => (
         userId
     }
 );
-
 /* Action creator to unset then when a logout occurs */
 export const unsetAuthedUser = () => (
     {
