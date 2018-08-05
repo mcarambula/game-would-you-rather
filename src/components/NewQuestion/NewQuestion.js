@@ -46,6 +46,7 @@ class NewQuestion extends Component {
                             type='text'
                             value={optionOne}
                             placeholder='Option one'
+                            autoComplete='off'
                             onChange={(e) => this.handleOptionChange(e, OPTION_ONE)}
                          />
                          <span className='or'>OR</span>
@@ -54,10 +55,11 @@ class NewQuestion extends Component {
                              type='text'
                              value={optionTwo}
                              placeholder='Option two'
+                             autoComplete='off'
                              onChange={(e) => this.handleOptionChange(e, OPTION_TWO)}
                           />
                      </div>
-                  <button className='button' disabled={optionOne === '' || optionTwo === ''}>Submit</button>
+                     <button className='button' disabled={optionOne === '' || optionTwo === ''}>Submit</button>
                 </form>
             </div>
         )
