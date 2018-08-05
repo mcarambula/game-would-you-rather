@@ -9,7 +9,8 @@ import './NewQuestion.css';
 class NewQuestion extends PureComponent {
     state = {
         [OPTION_ONE] : '',
-        [OPTION_TWO] : ''
+        [OPTION_TWO] : '',
+        submitting : false
     }
     static defaultProps = {
         handleAddQuestion: () => {},
@@ -28,6 +29,7 @@ class NewQuestion extends PureComponent {
     }
     handleSubmit = (e) => {
         e.preventDefault();
+        this.setState({ submitting: true });
         const optionOne = this.state[OPTION_ONE];
         const optionTwo = this.state[OPTION_TWO];
         this.props
@@ -35,7 +37,7 @@ class NewQuestion extends PureComponent {
             .then(() => this.props.history.push('/'));
     }
     render() {
-        const { optionOne, optionTwo } = this.state;
+        const { optionOne, optionTwo, submitting } = this.state;
         return (
             <div className='create-question'>
                 <h3 className='question-title'>{WOULD_YOU_RATHER}</h3>
@@ -59,7 +61,7 @@ class NewQuestion extends PureComponent {
                              onChange={(e) => this.handleOptionChange(e, OPTION_TWO)}
                           />
                      </div>
-                     <button className='button' disabled={optionOne === '' || optionTwo === ''}>Submit</button>
+                     <button className='button' disabled={optionOne === '' || optionTwo === '' || submitting }>Submit</button>
                 </form>
             </div>
         )
