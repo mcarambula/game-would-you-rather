@@ -10,7 +10,15 @@
     border: none;
     border-radius: 5px;
     font-size: 15px;
-    margin: 10px auto 0;
+    margin: 10px auto 0px;
+    padding: 18px;
+    text-align: center;
+}
+.Login .create-button {
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    margin: 10px 10px;
     padding: 18px;
     text-align: center;
 }
@@ -20,15 +28,12 @@
 .Login .div-1 {
     background-color: #b06175;
 }
-
 .Login .div-2 {
     background-color: #f3b967;
 }
-
 .Login .div-3 {
     background-color: #ec6e61;
 }
-
 .Login .div-4 {
     background-color: #52afa2;
 }
@@ -83,11 +88,19 @@
     transform: translateY(-35%);
     width: 170px;
 }
-
 .Login .create-user {
     display: block;
     text-align: right;
     color: #f3bf74;
     text-decoration: none;
     font-size: 14px;
+}
+.cancel {
+    font-size: 12px;
+    cursor: pointer;
+}
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

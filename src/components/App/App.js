@@ -29,20 +29,19 @@ class App extends Component {
     getRoute = () => {
         return (
         	<Switch>
-                <Route
+                <PrivateRoute
                     exact
                     path='/'
+					component={QuestionsList}
+				/>
+                <Route
+                    path='/login'
                     component={Login}
 				/>
                 <Route
                     path='/create-user'
                     component={CreateUser}
                 />
-                <PrivateRoute
-                    exact
-                    path='/questions'
-					component={QuestionsList}
-				/>
                 <PrivateRoute
 					path='/questions/:id'
 					component={Question}

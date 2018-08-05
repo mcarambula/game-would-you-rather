@@ -1,7 +1,7 @@
 const menu = {
     0: {
         title: 'Questions',
-        path:  'questions'
+        path:  ''
     },
     1: {
         title: 'Create a Question',

@@ -48,7 +48,7 @@ class Login extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.setUser(this.state.user);
-        const goTo = (this.props.location.state) ? this.props.location.state.from : '/questions';
+        const goTo = (this.props.location.state) ? this.props.location.state.from : '/';
         return this.props.history.push(goTo);
     }
     render() {

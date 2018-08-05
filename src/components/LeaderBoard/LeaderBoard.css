@@ -43,6 +43,7 @@
 }
 .leaderboard-item img {
     width: 50px;
+    border-radius: 50%;
 }
 .questions-report {
     align-items: center;

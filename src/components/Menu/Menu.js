@@ -8,6 +8,7 @@ const Menu  = () => (
         {
             Object.keys(menu).map((menuItem, i) => (
                 <NavLink
+                    exact
                     key={i}
                     activeClassName='active'
                     className='item'

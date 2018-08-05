@@ -52,9 +52,12 @@ class NewUser extends Component {
                                 onChange={ e => this.setState({lastname: e.target.value}) }
                             />
                         </div>
-                        <button
-                            className='button'
-                            disabled={firstname !== '' && lastname !== '' ? false : true}>CREATE</button>
+                        <div className='buttons'>
+                            <div className='cancel' onClick={()=> this.props.history.goBack()}>Cancel</div>
+                            <button
+                                className='create-button'
+                                disabled={firstname !== '' && lastname !== '' ? false : true}>CREATE</button>
+                        </div>
                     </div>
                 </form>
             </div>

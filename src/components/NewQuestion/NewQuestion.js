@@ -32,7 +32,7 @@ class NewQuestion extends Component {
         const optionTwo = this.state[OPTION_TWO];
         this.props
             .handleAddQuestion(optionOne, optionTwo)
-            .then(() => this.props.history.push('questions'));
+            .then(() => this.props.history.push('/'));
     }
     render() {
         const { optionOne, optionTwo } = this.state;
