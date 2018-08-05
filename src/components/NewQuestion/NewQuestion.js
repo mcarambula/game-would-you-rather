@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { handleAddQuestion } from '../../actions/shared';
@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { OPTION_ONE, OPTION_TWO, WOULD_YOU_RATHER } from '../../utils/variables';
 import './NewQuestion.css';
 
-class NewQuestion extends Component {
+class NewQuestion extends PureComponent {
     state = {
         [OPTION_ONE] : '',
         [OPTION_TWO] : ''

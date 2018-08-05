@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -7,7 +7,7 @@ import { handleCreateUser } from '../../actions/shared';
 import Top from './Top';
 import './Login.css';
 
-class NewUser extends Component {
+class NewUser extends PureComponent {
     state = {
         firstname : '',
         lastname: ''
@@ -55,7 +55,7 @@ class NewUser extends Component {
                         <div className='buttons'>
                             <div className='cancel' onClick={()=> this.props.history.goBack()}>Cancel</div>
                             <button
-                                className='create-button'
+                                className='button create-button'
                                 disabled={firstname !== '' && lastname !== '' ? false : true}>CREATE</button>
                         </div>
                     </div>

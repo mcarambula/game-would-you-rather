@@ -4,7 +4,7 @@ import { Redirect, Route } from 'react-router-dom';
 import NavBar from '../NavBar/NavBar';
 import Menu from '../Menu/Menu';
 
-/* Based on: https://tylermcginnis.com/react-router-protected-routes-authentication/ */
+/* This component is based on: https://tylermcginnis.com/react-router-protected-routes-authentication/ */
 const PrivateRoute = ({ authedUser, component: Component, ...rest }) =>  (
     <Route {...rest}  render={ props =>
         authedUser

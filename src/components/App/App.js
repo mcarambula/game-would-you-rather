@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -14,7 +14,7 @@ import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import { handleInitialData } from '../../actions/shared';
 import './App.css';
 
-class App extends Component {
+class App extends PureComponent {
     static defaultProps = {
         handleInitialData: () => {}
 	}

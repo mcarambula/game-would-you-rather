@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -6,7 +6,7 @@ import { setUser } from '../../actions/authedUser';
 import Top from './Top';
 import './Login.css';
 
-class Login extends Component {
+class Login extends PureComponent {
     state = {
         user: ''
     }
