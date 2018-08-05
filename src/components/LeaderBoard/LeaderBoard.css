@@ -3,7 +3,7 @@
 }
 .leaderboard h3 {
     background: gray;
-    color: white;
+    color: #ffffff;
     margin: 0 auto;
     padding: 8px;
     text-align: center;
@@ -14,7 +14,7 @@
     background: #3a3341;
 }
 .leaderboard-item {
-    background: white;
+    background: #ffffff;
     border: 1px solid gainsboro;
     border-radius: 2px;
     padding: 0 10px 10px;
@@ -60,7 +60,7 @@
 .score > div {
     background: #abddd5;
     border-radius: 2px;
-    color: black;
+    color: #000000;;
     line-height: 42px;
     padding: 0 30px;
     text-align: center;

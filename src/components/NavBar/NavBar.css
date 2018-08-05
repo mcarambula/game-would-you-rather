@@ -11,7 +11,7 @@
     top: 0;
 }
 .user-information {
-    color: white;
+    color: #ffffff;
 }
 .logout, .user-nav {
     display: inline-block;
@@ -20,7 +20,7 @@
 .logout {
     background: transparent;
     border: none;
-    color: white;
+    color: #ffffff;
     font-size: 13px;
     cursor: pointer;
 }

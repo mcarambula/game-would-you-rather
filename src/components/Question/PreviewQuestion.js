@@ -8,15 +8,20 @@ import './Question.css';
 
 const PreviewQuestion = ({ question, author, history }) => {
     return (
-        <div className='question' onClick={() => history.push(`questions/${question.id}`)}>
+        <div className='question'>
             <div className='question-title'>{WOULD_YOU_RATHER}</div>
             <div className='question-description'>
                 <div className='created-by'>
                     Created by:
                     <User user={author} showInNav={false} />
                 </div>
-                <div className='options'>
+                <div className='prev-options'>
                     <div>...{question.optionOne.text}...</div>
+                    <button
+                        className='button-question'
+                        onClick={() => history.push(`questions/${question.id}`)}>
+                        View Question
+                    </button>
                  </div>
             </div>
         </div>

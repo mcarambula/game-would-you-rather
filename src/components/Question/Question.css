@@ -27,7 +27,7 @@
 }
 .option.selected:before {
     background: #3a3441;
-    color: white;
+    color: #ffffff;
     content: 'Your vote';
     font-size: 10px;
     left: 0px;
@@ -51,6 +51,14 @@
 .option.selectable:first-child:hover{
     background: #dca956;
 }
+.prev-options {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    flex-direction: column;
+    padding-left: 15px;
+}
 .options {
     align-items: center;
     display: flex;
@@ -59,9 +67,9 @@
     padding-left: 15px;
 }
 .percetage {
-    background: white;
+    background: #ffffff;
     border-radius: 2px;
-    border: 1px solid white;
+    border: 1px solid #ffffff;
     font-size: 12px;
     position: relative;
     width: 85%;
@@ -72,10 +80,11 @@
 .percetage > div {
     background: #888888;
     height: 100%;
-    color: white;
+    color: #ffffff;
 }
 .question {
     border-radius: 5px;
+    background: #ffffff;
     box-shadow: 0 0 11px 0px #c1c1c1;
     box-sizing: border-box;
     margin: 15px 20px;
@@ -88,4 +97,7 @@
 .votes {
     margin-top: 10px;
     font-size: 14px;
+}
+.no-question {
+    font-size: 20px;
 }

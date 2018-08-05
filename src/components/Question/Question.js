@@ -33,6 +33,9 @@ class Question extends Component {
     }
     render() {
         const { author, question, answerSelected } = this.props;
+        if ( question === null ) {
+            return <p className='no-question'> Question doesn't exist. </p>
+        }
         return (
             <div className='question'>
                 <div className='question-title'>{WOULD_YOU_RATHER}</div>
@@ -64,7 +67,7 @@ Question.propTypes =  {
     activeTab: PropTypes.number.isRequired,
     answerSelected: PropTypes.string,
     author: PropTypes.object.isRequired,
-    question: PropTypes.object.isRequired,
+    question: PropTypes.object,
     authedUser: PropTypes.string.isRequired,
     questionAnswered: PropTypes.bool
 }
@@ -83,7 +86,7 @@ const mapDispatchToProps = { handleSaveAnswer };
 
 function mapStateToProps ({ authedUser, users, questions }, props) {
     const { id } = props.match.params;
-    const question = (id && questions[id]) ? questions[id] : {};
+    const question = (id && questions[id]) ? questions[id] : null;
     /* Determinate the answer selected by the user, in case the user already did */
     const answerSelected = getAnswerSelected(question, authedUser);
     const questionAnswered = (answerSelected !== null);
@@ -92,7 +95,7 @@ function mapStateToProps ({ authedUser, users, questions }, props) {
         answerSelected,
         questionAnswered,
         question: question,
-        author: users[question.author]|| {}
+        author: question !== null ? users[question.author] : {}
     }
 }
 

@@ -33,7 +33,7 @@
     background-color: #52afa2;
 }
 .Login .inner-box {
-    color: white;
+    color: #ffffff;
     font-size: 22px;
     padding: 0 25px 35px;
     line-height: 40px;
@@ -41,7 +41,7 @@
     flex-direction: column;
 }
 .Login .line-colors {
-    background: white;
+    background: #ffffff;
     display: flex;
     height: 3px;
     left: 0;
