@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { handleSaveAnswer } from '../../actions/shared';
@@ -7,7 +7,6 @@ import User from '../User/User';
 import QuestionStatistics from './QuestionStatistics';
 import { OPTION_ONE, OPTION_TWO, WOULD_YOU_RATHER } from '../../utils/variables';
 import { getAnswerSelected } from '../../utils/general';
-
 import './Question.css';
 
 class Question extends Component {
@@ -34,7 +33,7 @@ class Question extends Component {
     render() {
         const { author, question, answerSelected } = this.props;
         if ( question === null ) {
-            return <p className='no-question'> Question doesn't exist. </p>
+            return <Redirect to='/404' />;
         }
         return (
             <div className='question'>

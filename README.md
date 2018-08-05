@@ -6,6 +6,34 @@ This project is an implementation of the game "would you rather" where the users
 
 Users will be able to answer questions, see which questions they haven’t answered, see how other people have voted, post questions, and see the ranking of users on the leaderboard.
 
+## App Functionality
+
+### Logging
+
+The person using this application would be able to logging selecting a name from the list of existing users. Alternatively, he/she could create his own account clicking on the 'create a new user' link and filling his/her first name and last name. Once the user logs in, the polls page would be shown.
+
+### Answered / unanswered polls
+
+Once the user logs in, he would be able to toggle between his/her answered and unanswered polls. The polls in both categories are arranged from the most recently created (top) to the least recently created (bottom). The user will be able to click on a particular question and answer it by choosing the option they like.
+
+### Poll statistics
+
+Upon voting in a poll, all of the information of an answered poll is displayed. The user's response is recorded and clearly visible on the poll detail page. Users can only vote once per poll; they aren't allowed to change their answer after they've voted.
+
+### Creating a new poll
+
+Users would be able to create their own poll going to the section 'Create a Question'. They will need to fill option A and option B.
+Upon submitting the form, the home page will be shown with the new question added in the unanswered category.
+
+### Leaderboard
+
+Users would be able to see the positions of the user going to the 'Leaderboard' section.
+
+### Log out
+
+Any user would be able to log out clicking on the logout link, next to their user's information on the nav bar.
+
+
 ## Getting started
 
 ### Step 1:
